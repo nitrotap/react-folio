@@ -13,13 +13,13 @@ function Resume() {
                         <h6 className="card-title">
                             Google Docs
                         </h6>
-                        <button className='btn' href="https://docs.google.com/document/d/1dR6I9KTetckF0IIcYY65EcRlWII-auqD68jM95KH4Ts/edit?usp=sharing" target="_blank" rel="noreferrer">View Online</button>
+                        <button className='btn' onClick={() => window.open("https://docs.google.com/document/d/1dR6I9KTetckF0IIcYY65EcRlWII-auqD68jM95KH4Ts/edit?usp=sharing", "_blank")} target="_blank" rel="noreferrer">View Online</button>
                     </div>
                     <div className='card blue-grey col s12 m6 center-align' style={{ padding: 20 }}>
                         <h6 className="center-align card-title">
                             PDF
                         </h6>
-                        <button className='btn' href="https://drive.google.com/file/d/1RO-bp1oToL_irxx_srOwqA_7W8tfAXlf/view?usp=sharing" target="_blank" rel="noreferrer">Download</button>
+                        <button className='btn' onClick={() => window.open("https://drive.google.com/file/d/1RO-bp1oToL_irxx_srOwqA_7W8tfAXlf/view?usp=sharing", "_blank")} target="_blank" rel="noreferrer">Download</button>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@ function Resume() {
                     Abilities: Excellent written communication skills and highly detail-oriented, Organized and comfortable with multiple projects, Able to work closely in a team or independently with progress reports
                 </li>
             </div>
-        </div>
+        </div >
     )
 }
 
