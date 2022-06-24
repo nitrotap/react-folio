@@ -13,6 +13,8 @@ node_modules/
 # testing
 /coverage
 
+/build
+
 # misc
 .DS_Store
 .env.local

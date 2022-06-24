@@ -9,8 +9,10 @@ function Footer() {
                 <h4 className='col s12 m2'>Made with <span>&#x2764;</span> in CO.</h4>
                 <div className="col s12 m2">
                     <p>GitHub</p>
-                    <button href="https://github.com/nitrotap" target="_blank" rel="noreferrer">
-                        <img src={gitHubLogo} width="50px" className='white' alt="Find me on Github" />
+                    <button type='button'>
+                        <a href="https://github.com/nitrotap" target="_blank" rel="noreferrer">
+                            <img src={gitHubLogo} width="50px" className='white' alt="Find me on Github" />
+                        </a>
                     </button>
                 </div>
                 <div className="col s12 m2">
