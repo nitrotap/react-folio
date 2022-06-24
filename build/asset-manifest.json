@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/nitrotap/react-folio/static/css/main.6de3db77.css",
-    "main.js": "/nitrotap/react-folio/static/js/main.b297afcb.js",
-    "static/js/787.612b19a2.chunk.js": "/nitrotap/react-folio/static/js/787.612b19a2.chunk.js",
-    "static/media/kj-img.jpg": "/nitrotap/react-folio/static/media/kj-img.021c9ad48ec2321e4e70.jpg",
-    "static/media/mt-background-4.png": "/nitrotap/react-folio/static/media/mt-background-4.1f6ce3610a150c4705f6.png",
-    "static/media/mhc-screen-shot.png": "/nitrotap/react-folio/static/media/mhc-screen-shot.03a303c004783aa899aa.png",
-    "static/media/thg-screenshot.jpg": "/nitrotap/react-folio/static/media/thg-screenshot.4aa1c8525c21f22b9251.jpg",
-    "static/media/code-quiz-screen-shot.png": "/nitrotap/react-folio/static/media/code-quiz-screen-shot.74e9b4c55610402c8795.png",
-    "static/media/st-screen-shot.png": "/nitrotap/react-folio/static/media/st-screen-shot.fde5482411d7424c04ef.png",
-    "static/media/lm-screenshot.png": "/nitrotap/react-folio/static/media/lm-screenshot.c959a74266864a222b9d.png",
-    "static/media/pw-generator-screen-shot.png": "/nitrotap/react-folio/static/media/pw-generator-screen-shot.4bb023cc24ed5d3764b3.png",
-    "static/media/LI-Logo.png": "/nitrotap/react-folio/static/media/LI-Logo.a95afc06831647f5fca2.png",
-    "static/media/GitHub_Logo.png": "/nitrotap/react-folio/static/media/GitHub_Logo.746ec8f0bc97208f903e.png",
-    "index.html": "/nitrotap/react-folio/index.html",
-    "main.6de3db77.css.map": "/nitrotap/react-folio/static/css/main.6de3db77.css.map",
-    "main.b297afcb.js.map": "/nitrotap/react-folio/static/js/main.b297afcb.js.map",
-    "787.612b19a2.chunk.js.map": "/nitrotap/react-folio/static/js/787.612b19a2.chunk.js.map"
+    "main.css": "/react-folio/static/css/main.91fe819b.css",
+    "main.js": "/react-folio/static/js/main.e0f6cee6.js",
+    "static/js/787.612b19a2.chunk.js": "/react-folio/static/js/787.612b19a2.chunk.js",
+    "static/media/kj-img.jpg": "/react-folio/static/media/kj-img.021c9ad48ec2321e4e70.jpg",
+    "static/media/mt-background-4.png": "/react-folio/static/media/mt-background-4.1f6ce3610a150c4705f6.png",
+    "static/media/mhc-screen-shot.png": "/react-folio/static/media/mhc-screen-shot.03a303c004783aa899aa.png",
+    "static/media/thg-screenshot.jpg": "/react-folio/static/media/thg-screenshot.4aa1c8525c21f22b9251.jpg",
+    "static/media/code-quiz-screen-shot.png": "/react-folio/static/media/code-quiz-screen-shot.74e9b4c55610402c8795.png",
+    "static/media/st-screen-shot.png": "/react-folio/static/media/st-screen-shot.fde5482411d7424c04ef.png",
+    "static/media/lm-screenshot.png": "/react-folio/static/media/lm-screenshot.c959a74266864a222b9d.png",
+    "static/media/pw-generator-screen-shot.png": "/react-folio/static/media/pw-generator-screen-shot.4bb023cc24ed5d3764b3.png",
+    "static/media/LI-Logo.png": "/react-folio/static/media/LI-Logo.a95afc06831647f5fca2.png",
+    "static/media/GitHub_Logo.png": "/react-folio/static/media/GitHub_Logo.746ec8f0bc97208f903e.png",
+    "index.html": "/react-folio/index.html",
+    "main.91fe819b.css.map": "/react-folio/static/css/main.91fe819b.css.map",
+    "main.e0f6cee6.js.map": "/react-folio/static/js/main.e0f6cee6.js.map",
+    "787.612b19a2.chunk.js.map": "/react-folio/static/js/787.612b19a2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6de3db77.css",
-    "static/js/main.b297afcb.js"
+    "static/css/main.91fe819b.css",
+    "static/js/main.e0f6cee6.js"
   ]
 }
