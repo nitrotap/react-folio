@@ -1,24 +1,74 @@
-import logo from './logo.svg';
 import './App.css';
 
+import { useState } from 'react';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import Contact from './components/Contact'
+import Portfolio from './components/Portfolio'
+import Resume from './components/Resume'
+import About from './components/About'
+
+
 function App() {
+
+  const [links] = useState([
+    {
+      name: `About`,
+      description: `About Me`
+    },
+    {
+      name: `Portfolio`,
+      description: ``
+    },
+    {
+      name: `Resume`,
+      description: ``
+    },
+    {
+      name: `Contact`,
+      description: ``
+    },
+  ])
+
+  const [currentLink, setCurrentLink] = useState(links[0])
+
+  // add conditional logic for page rendering
+  const renderPage = () => {
+    if (currentLink === 'Contact') {
+      return <Contact />;
+    }
+    if (currentLink === 'Portfolio') {
+      return <Portfolio />;
+    }
+    if (currentLink === 'Resume') {
+      return <Resume />;
+    }
+    return <About />;
+  };
+
+  // handler using useState() setter to page handler function
+  const handlePageChange = (page) => setCurrentLink(page);
+
+  useState(() => {
+    handlePageChange('About')
+  })
+
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <main className=''>
+        <Header handlePageChange={handlePageChange} currentLink={currentLink} setCurrentLink={setCurrentLink} >
+        </Header>
+        <div className="container" style={{ backgroundColor: '#14213d' }}>
+          {renderPage()}
+        </div>
+      </main>
+      <div class="divider"></div>
+
+      <Footer></Footer>
+    </>
   );
 }
 
