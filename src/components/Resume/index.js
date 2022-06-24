@@ -32,7 +32,7 @@ function Resume() {
                     Languages: JavaScript, Java, SQL, R (currently learning Python)
                 </li>
                 <li>
-                    Workflows: Agile and Waterfall using GitHub/GitLab/Jupyter, Functional and OOP paradigms=
+                    Workflows: Agile and Waterfall using GitHub/GitLab/Jupyter, Functional and OOP paradigms
                 </li>
                 <li>
                     Server-side: Express.js, Node.js/npm, Jest, Heroku, AWS, Apollo, GraphQL, JAWSDB, service workers, PWAs, RESTful APIs

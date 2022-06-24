@@ -20,7 +20,7 @@ function Portfolio() {
             screenshot: mhcScreenShot,
             alt_text: 'mental health check screen shot',
             gitHubLink: 'https://github.com/nitrotap/mental-health-check',
-            deployedLink: 'https://nitrotap.github.io/mental-health-check/',
+            deployedLink: 'https://mhcheck.app',
             description: `Mental Health Check is a quiz app that helps users identify their feelings and directs them to helpful resources. The app uses the MERN stack with Apollo/GraphQL combined with Chart.js, Material UI, Heroku, bcrypt, and JSON Web Tokens.`
         },
         {

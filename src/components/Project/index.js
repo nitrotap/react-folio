@@ -20,8 +20,8 @@ function Project(props) {
                     <p>{description}</p>
                 </div>
                 <div className="card-action center-align">
-                    <a href={gitHubLink}>GitHub</a>
-                    <a href={deployedLink}>Deployed Link</a>
+                    <a href={gitHubLink} target="_blank" rel="noreferrer">GitHub</a>
+                    <a href={deployedLink} target="_blank" rel="noreferrer">Deployed Link</a>
                 </div>
             </div>
         </div >
