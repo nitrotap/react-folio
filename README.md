@@ -3,9 +3,9 @@
 ## Description   
 My personal portfolio made with React.  
 
-[Deployed](https://nitrotap.github.io/react-portfolio/)   
+[Deployed](https://nitrotap.github.io/react-folio/)   
 
-![badmath](https://img.shields.io/github/languages/top/nitrotap/react-portfolio)   
+![badmath](https://img.shields.io/github/languages/top/nitrotap/react-folio)   
 
 
 ## Table of Contents   
