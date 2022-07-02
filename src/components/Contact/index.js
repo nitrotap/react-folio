@@ -6,7 +6,7 @@ import lILogo from '../../assets/images/LI-Logo.png'
 function Contact() {
 
     return (
-        <section className="container" style={{ backgroundColor: '#14213d', padding: 10, marginTop: 15 }}>
+        <section className="container" style={{ backgroundColor: '#14213d', padding: 10, marginTop: 15, marginBottom: 15 }}>
             <h4 className="center-align">Contact Info</h4>
             <div className='row'>
                 <div className="col s12 center-align">
@@ -21,7 +21,7 @@ function Contact() {
                 </div>
                 <div className="col s12 center-align">
                     <div className='card blue-grey'>
-                        <p className='card-title '>Message me on GitHub</p>
+                        <p className='card-title '>Find me on GitHub</p>
                         <button type="button">
                             <a href="https://github.com/nitrotap" target="_blank" rel="noreferrer">
                                 <img src={gitHubLogo} width="150px" className='white' alt="Find me on Github" />

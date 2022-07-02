@@ -69,7 +69,7 @@ function Portfolio() {
     const projectHandler = (projectList) => {
         // dynamically generate multiple JSX fragments to put together
         return (
-            <div style={{ padding: 10, marginTop: 15, backgroundColor: '#14213d' }}>
+            <div style={{ padding: 10, marginTop: 15, backgroundColor: '#14213d', marginBottom: 15 }}>
                 <h3 className="center-align">
                     Portfolio
                 </h3>

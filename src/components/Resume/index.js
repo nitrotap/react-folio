@@ -3,7 +3,7 @@ import React from 'react';
 function Resume() {
 
     return (
-        <div className="container" style={{ padding: 10, backgroundColor: '#14213d', marginTop: 15 }}>
+        <div className="container" style={{ padding: 10, backgroundColor: '#14213d', marginTop: 15, marginBottom: 15 }}>
             <h4 className="center-align">
                 Resume
             </h4>

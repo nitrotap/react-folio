@@ -3,7 +3,7 @@ import kjImg from '../../assets/images/kj-img.jpg'
 
 function About() {
     return (
-        <div style={{ marginTop: 15, padding: 10 }}>
+        <div style={{ marginTop: 15, padding: 10, marginBottom: 15 }}>
             <section id="about" className="row valign-wrapper">
                 <div className='card' style={{ backgroundColor: '#14213d' }}>
                     <div className="col s12 m4">
