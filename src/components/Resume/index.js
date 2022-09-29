@@ -19,7 +19,7 @@ function Resume() {
                         <h6 className="center-align card-title">
                             PDF
                         </h6>
-                        <button className='btn' onClick={() => window.open("https://github.com/nitrotap/react-folio/raw/main/src/assets/Resume-Kartikrao-Jevaji.pdf", "_blank")} target="_blank" rel="noreferrer">Download</button>
+                        <button className='btn' onClick={() => window.open("https://drive.google.com/file/d/14JhvbEexxq9lNVc7H97f8v1YanhpT4DO", "_blank")} target="_blank" rel="noreferrer">Download</button>
                     </div>
                 </div>
             </div>
