@@ -3,8 +3,8 @@ import kjImg from '../../assets/images/kj-thumbnail.jpg'
 
 function About() {
     return (
-        <div class="v6_24">
-            <img src={kjImg} class="v6_26"></img>
+        <div className="v6_24">
+            <img alt="Full Stack Web Developer Kartik Jevaji" src={kjImg} className="v6_26"></img>
             <div>
                 <h1>Kartik Jevaji</h1>
             </div>
