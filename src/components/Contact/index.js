@@ -10,7 +10,7 @@ function Contact() {
             <div className='row'>
                 <div className="col s12 center-align">
                     <div className='card blue-grey'>
-                        <p className='card-title '>Email me at kartikinpublic@gmail.com</p>
+                        <p className='card-title' style={{ overflow: 'auto' }}>Email me at kartikinpublic@gmail.com</p>
                         <div className='card-content'>
                             <a href="mailto:kartikinpublic@gmail.com" target="_blank" rel="noreferrer">
                                 <i className='medium material-icons' style={{ backgroundColor: 'white', padding: '5px', borderRadius: '0', }}>email</i>
