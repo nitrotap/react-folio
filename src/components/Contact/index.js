@@ -1,7 +1,6 @@
 import React from 'react';
 
 import gitHubLogo from '../../assets/images/GitHub_Logo.png'
-import lILogo from '../../assets/images/LI-Logo.png'
 
 function Contact() {
 
@@ -12,36 +11,37 @@ function Contact() {
                 <div className="col s12 center-align">
                     <div className='card blue-grey'>
                         <p className='card-title '>Email me at kartikinpublic@gmail.com</p>
-                        <button type="button">
+                        <div className='card-content'>
                             <a href="mailto:kartikinpublic@gmail.com" target="_blank" rel="noreferrer">
-                                <i className='medium material-icons'>email</i>
+                                <i className='medium material-icons' style={{ backgroundColor: 'white', padding: '5px', borderRadius: '0', }}>email</i>
                             </a>
-                        </button>
+                        </div>
                     </div>
                 </div>
                 <div className="col s12 center-align">
                     <div className='card blue-grey'>
                         <p className='card-title '>Find me on GitHub</p>
-                        <button type="button">
+                        <div className='card-content'>
                             <a href="https://github.com/nitrotap" target="_blank" rel="noreferrer">
-                                <img src={gitHubLogo} width="150px" className='white' alt="Find me on Github" />
+                                <img src={gitHubLogo} width="150px" className='white' style={{ borderRadius: '0', }} alt="Find me on Github" />
                             </a>
-                        </button>
+                        </div>
                     </div>
                 </div>
                 <div className="col s12 center-align">
                     <div className='card blue-grey'>
-                        <p className='card-title '>Message me on LinkedIn</p>
-                        <button type="button">
-                            <a href="https://www.linkedin.com/in/kjevaji/" target="_blank" style={{ padding: 20 }} rel="noreferrer">
-                                <img src={lILogo} width="150px" className='white' alt="Find me on Github" />
+                        <p className='card-title'>Message me on LinkedIn</p>
+                        <div class='card-content'>
+                            <a href="https://www.linkedin.com/in/kjevaji/" target="_blank" rel="noreferrer">
+                                <i class="fab fa-linkedin fa-4x" style={{ backgroundColor: 'white', borderRadius: '0', padding: '5px' }}>
+                                </i>
                             </a>
-                        </button>
+                        </div>
                     </div>
                 </div>
 
             </div>
-        </section>
+        </section >
     );
 }
 

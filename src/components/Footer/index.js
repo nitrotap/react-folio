@@ -1,39 +1,24 @@
 import React from 'react';
-import gitHubLogo from '../../assets/images/GitHub-Mark-120px-plus.png'
-import linkedInLogo from '../../assets/images/LI-In-Bug.png'
 
 function Footer() {
     return (
-        <footer className="center-align container" style={{ marginTop: '20px' }}>
-            <section className='center-align row'>
-                <h4 className='col s12 m2'>Made with <span>&#x2764;</span> in CO.</h4>
-                <div className="col s12 m2">
-                    <p>GitHub</p>
-                    <button type='button'>
-                        <a href="https://github.com/nitrotap" target="_blank" rel="noreferrer">
-                            <img src={gitHubLogo} width="50px" className='white' alt="Find me on Github" />
-                        </a>
-                    </button>
+        <footer>
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"></link>
+            <div className='footer'>
+                <h4 style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', }}>Made with <span style={{ color: 'peachpuff' }}>&nbsp;&#x2764;&nbsp;</span> in CO.</h4>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', }}>
+                    <a id="profile-link" href="https://github.com/freecodecamp" rel="noreferrer" target="_blank" class="btn contact-details"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="https://www.linkedin.com/in/kjevaji/" target="_blank" rel="noreferrer" class="btn contact-details"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="mailto:kartikinpublic@gmail.com" class="btn contact-details"><i class="fas fa-at"></i> Email</a>
                 </div>
-                <div className="col s12 m2">
-                    <p>LinkedIn</p>
-                    <button type="button">
-                        <a href="https://www.linkedin.com/in/kjevaji/" target="_blank" rel="noreferrer">
-                            <img src={linkedInLogo} width="60px" alt="Find me on LinkedIn" />
-                        </a>
-                    </button>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <h6>
+                        &copy; 2022 Kartik Jevaji
+                    </h6>
                 </div>
-                <div className="col s12 m2">
-                    <p>Email</p>
-                    <button type="button">
-                        <a href="mailto:kartikinpublic@gmail.com" target="_blank" rel="noreferrer">
-                            <i className='medium material-icons'>email</i>
-                        </a>
-                    </button>
-                </div>
-                <div className='col s12 m2'>&copy; 2022 Kartik Jevaji</div>
 
-            </section>
+            </div>
+
 
         </footer>
     )

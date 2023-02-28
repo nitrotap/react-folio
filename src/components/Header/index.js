@@ -15,9 +15,9 @@ function Header({ currentLink, handlePageChange, setCurrentLink }) {
             ></Nav>
 
             <section className="container">
-                <h2 id="header" className="row center-align">Kartik Jevaji</h2>
+                {/* <h2 id="header" className="row center-align">Kartik Jevaji</h2> */}
+
             </section>
-            <div class="divider"></div>
 
 
 

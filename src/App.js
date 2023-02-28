@@ -58,16 +58,14 @@ function App() {
 
   return (
     <>
-      <main className=''>
+      <main style={{ height: '90vh' }}>
         <Header handlePageChange={handlePageChange} currentLink={currentLink} setCurrentLink={setCurrentLink} >
         </Header>
-        <div className="container" style={{ backgroundColor: '#14213d' }}>
+        <div className="container">
           {renderPage()}
+          <Footer></Footer>
         </div>
       </main>
-      <div class="divider"></div>
-
-      <Footer></Footer>
     </>
   );
 }
