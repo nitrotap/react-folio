@@ -48,4 +48,92 @@
     left: 49px;
     overflow: hidden;
   }
-  
+
+.v6_24 {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .v6_24 {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+.section {
+  width: 100%;
+  background-color: #fafafa;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+@media (min-width: 768px) {
+  .section {
+    width: calc(50% - 1rem);
+  }
+}
+
+@media (min-width: 1200px) {
+  .section {
+    width: calc(33.33% - 1rem);
+  }
+}
+
+/* CSS */
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .profile {
+      flex-direction: row;
+      text-align: left;
+      align-items: flex-start;
+  }
+}
+
+.profile img {
+  margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+  .profile img {
+      margin-bottom: 0;
+      margin-right: 20px;
+  }
+}
+
+.profileContainer {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+.profileContainer > div {
+  display: grid;
+  place-items: center;
+}
+
+.profileImage {
+  animation: fadeInDownBig;
+}
+
+.profileName {
+  animation: bounce;
+}
+
+@media (max-width: 400px) {
+  .profileContainer {
+    grid-template-columns: 1fr;
+  }
+}

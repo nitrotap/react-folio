@@ -46,7 +46,7 @@ function Nav({ currentLink, handlePageChange, setCurrentLink }) {
                 </li>
             </ul>
             <div className="right">
-                <h3 className="white-text">nitrotap</h3>
+                <h3 className="white-text animate__animated animate__bounce">nitrotap</h3>
             </div>
         </header >
     );
