@@ -26,7 +26,7 @@ function Footer() {
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <h6>
-                        &copy; 2022 Kartik Jevaji
+                        &copy; 2023 Kartik Jevaji
                     </h6>
                 </div>
             </div>

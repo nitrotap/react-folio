@@ -9,9 +9,6 @@ import stScreenShot from '../../assets/images/st-screen-shot.png'
 import lmScreenShot from '../../assets/images/lm-screenshot.png'
 import blScreenShot from '../../assets/images/brain-lift-ss.png'
 
-
-
-
 function Portfolio() {
 
     const projectList = [
@@ -82,22 +79,6 @@ function Portfolio() {
                 </h3>
 
                 {<div className="row card-container">
-
-                    {/* {projectList.map((project, index) => {
-                        return (
-                            <div className={`animate__animated animate__fadeInUp animate__delay-${index}s`}>
-                                <Project
-                                    key={project.name.toString()}
-                                    name={project.name}
-                                    screenshot={project.screenshot}
-                                    alt_text={project.alt_text}
-                                    gitHubLink={project.gitHubLink}
-                                    deployedLink={project.deployedLink}
-                                    description={project.description}
-                                ></Project>
-                            </div>
-                        )
-                    })} */}
                     {projectList.map((project, index) => {
                         return (
                             <div
@@ -120,15 +101,10 @@ function Portfolio() {
                 </div>}
 
             </div>
-
-
-
         )
-
     }
 
     let a = projectHandler(projectList)
-    // console.log(a);
     return a;
 }
 

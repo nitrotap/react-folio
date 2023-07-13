@@ -1,55 +1,3 @@
-// import React from 'react';
-// import kjImg from '../../assets/images/kj-thumbnail.jpg';
-//
-// function About() {
-//     return (
-//         <div className="v6_24">
-//             <img alt="kartik" src={kjImg} className="v6_26 animate__animated animate__fadeInDownBig"></img>
-//             <div>
-//                 <h1 className="animate__animated animate__bounce">Kartik Jevaji</h1>
-//             </div>
-//             <div>
-//                 <h4 className="animate__animated animate__fadeIn" style={{ padding: '3rem' }}>Full Stack Web Developer</h4>
-//                 <h5 className="animate__animated animate__fadeIn" style={{ padding: '2rem' }}>Combining exemplary communication and analytical skills with a notable track record in the non-profit sector, CRMs, and databases.
-//                 </h5>
-//                 <div className='divider'></div>
-//                 <h5 className="animate__animated animate__fadeIn" style={{ padding: '2rem' }}>
-//                     Exhibits organizational skills honed through professional experience juggling multiple projects, both in collaborative teams and autonomous settings.
-//                 </h5>
-//                 <div className='divider'></div>
-//                 <h5 className="animate__animated animate__fadeIn" style={{ padding: '2rem' }}>
-//                     Adept at troubleshooting with a natural aptitude for problem-solving.
-//                 </h5>
-//             </div>
-//             <div className="animate__animated animate__fadeInUp">
-//                 <h2 style={{ padding: '3rem' }}>Technical Skills</h2>
-//
-//                 <div style={{ backgroundColor: 'rgb(42,55,62)', padding: '2rem', marginBottom: '1rem' }}>
-//                     <div>
-//                         <h3>Languages</h3>
-//                     </div>
-//                     <div>
-//                         <h5>JavaScript | TypeScript | PHP | HTML | CSS | SQL | Java</h5>
-//                     </div>
-//                 </div>
-//
-//                 <div style={{ backgroundColor: 'rgb(42,55,62)', padding: '2rem', marginBottom: '1rem' }}>
-//                     <h3>Technologies</h3>
-//
-//                     <h5>Apache | Express.js | Node.js/npm | Apollo | GraphQL | AWS | REST APIs | React | jQuery | Apache | Angular | Ionic | Cordova</h5>
-//                 </div>
-//                 <div style={{ backgroundColor: 'rgb(42,55,62)', padding: '2rem', marginBottom: '1rem' }}>
-//                     <h3>Databases</h3>
-//                     <h5>MySQL | Postgres | Sequelize | MongoDB | Mongoose</h5>
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// }
-//
-// export default About;
-//
-
 import React from 'react';
 import kjImg from '../../assets/images/kj-thumbnail.jpg';
 
@@ -66,12 +14,6 @@ function About() {
                 </div>
 
             </div>
-
-
-
-
-
-
             <div>
                 <h4 className="animate__animated animate__fadeIn" style={{ padding: '1rem' }}>Full Stack Web Developer</h4>
                 <div style={{ backgroundColor: 'rgb(42,55,62)' }}>
@@ -126,7 +68,6 @@ function About() {
                         <img style={{ margin: '2px' }} src="https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white" alt="Heroku Badge"></img>
                         <img style={{ margin: '2px' }} src="https://img.shields.io/badge/bcrypt-5A6E9C?style=for-the-badge&logoColor=white" alt="bcrypt Badge"></img>
                         <img style={{ margin: '2px' }} src="https://img.shields.io/badge/JSONWebTokens-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white" alt="JSON Web Tokens Badge"></img>
-
                     </div>
                 </div>
                 <div style={{ padding: '1rem', border: '1px solid #ccc', borderRadius: '10px', backgroundColor: 'rgb(42,55,62)', marginBottom: '1rem' }}>
@@ -144,8 +85,6 @@ function About() {
                         <img style={{ margin: '2px' }} src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=Angular&logoColor=white" alt="Angular Badge"></img>
                         <img style={{ margin: '2px' }} src="https://img.shields.io/badge/Capacitor-119EFF?style=for-the-badge&logo=Capacitor&logoColor=white" alt="Capacitor Badge"></img>
                         <img style={{ margin: '2px' }} src="https://img.shields.io/badge/Cordova-E8E8E8?style=for-the-badge&logo=Apache-Cordova&logoColor=black" alt="Cordova Badge"></img>
-
-
                     </div>
                 </div>
 
@@ -172,8 +111,6 @@ function About() {
                     <p>Maintained an impeccable safety record by strictly following traffic rules</p>
                     <p>Successfully operated as an independent contractor, balancing finances and customer satisfaction</p>
                 </div>
-
-                {/* Add other experiences in similar divs */}
             </div>
             <div style={{ padding: '1rem', borderRadius: '10px', margin: '1rem' }}>
                 <h3>Contact</h3>
