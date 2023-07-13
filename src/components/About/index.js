@@ -57,12 +57,18 @@ function About() {
     return (
         <div className="v6_24">
 
-            <div className="profile">
-                <img alt="kartik" src={kjImg} className="v6_26 animate__animated animate__fadeInDownBig"></img>
+            <div className="profileContainer">
+                <div className="profile">
+                    <img alt="kartik" src={kjImg} className="profileImage v6_26 animate__animated"></img>
+                </div>
                 <div>
-                    <h1 className="animate__animated animate__bounce">Kartik Jevaji</h1>
+                    <h1 className="profileName animate__animated animate__bounce">Kartik Jevaji</h1>
                 </div>
             </div>
+
+
+
+
 
 
             <div>
@@ -100,11 +106,11 @@ function About() {
                     <h5>MySQL | Postgres | Sequelize | MongoDB | Mongoose</h5>
                 </div>
             </div>
-            <div style={{ border: '1px solid #ccc', borderRadius: '10px' }} className='animate__animated animate__fadeInUp animate__delay-2s'>
+            <div style={{}} className='animate__animated animate__fadeInUp animate__delay-2s'>
                 <h3>Relevant Experience</h3>
                 <div style={{ padding: '1rem', border: '1px solid #ccc', borderRadius: '10px', backgroundColor: 'rgb(42,55,62)', marginBottom: '1rem' }}>
                     <h4>Mental Health Check</h4>
-                    <h5><a href='https://www.mhcheck.app'>https://www.mhcheck.app/</a></h5>
+                    <h5><a href='https://www.mhcheck.app'>mhcheck.app</a></h5>
                     <p>Developer and Creator | <a href="https://github.com/nitrotap/mental-health-check">github.com/nitrotap/mental-health-check</a></p>
                     <p>Created mental health quiz progressive web app that helps users track their moods and check-in.</p>
                     <div style={{ padding: '1rem' }}>
@@ -124,6 +130,8 @@ function About() {
                 </div>
                 <div style={{ padding: '1rem', border: '1px solid #ccc', borderRadius: '10px', backgroundColor: 'rgb(42,55,62)', marginBottom: '1rem' }}>
                     <h4>Brain Lift</h4>
+                    <h5><a href='https://www.brain-lift.org'>brain-lift.org</a></h5>
+
                     <p>Developer and Creator | <a href="https://github.com/nitrotap/brain-lift">github.com/nitrotap/brain-lift</a></p>
                     <p>Designed and developed a full-stack cross-platform application to help users learn, measure, and track their cognitive load using the NASA Task Load Index in web, iOS, and Android</p>
                     <div style={{ padding: '1rem' }}>
@@ -142,7 +150,8 @@ function About() {
 
                 <div style={{ padding: '1rem', border: '1px solid #ccc', borderRadius: '10px', backgroundColor: 'rgb(42,55,62)', marginBottom: '1rem' }}>
                     <h4>Data Entry/Tech Support</h4>
-                    <h5>2017 – Current Volunteer | Alzheimer’s Association Denver, CO</h5>
+                    <h5>2017 – Current</h5>
+                    <h5>Volunteer | Alzheimer’s Association Denver, CO</h5>
                     <p>Critical thinking used to ensure accuracy of key database identifiers</p>
                     <p>Quick problem-solving during education classes providing on-demand tech support virtually
                     </p>
@@ -156,25 +165,16 @@ function About() {
 
                 <div style={{ padding: '1rem', border: '1px solid #ccc', borderRadius: '10px', backgroundColor: 'rgb(42,55,62)', marginBottom: '1rem' }}>
                     <h4>Independent Contractor</h4>
-                    <h5>Present Uber | Denver, CO</h5>
+                    <h5>Present </h5>
+                    <h5>Uber | Denver, CO</h5>
                     <p>Provided excellent service to a diverse passenger base</p>
                     <p>Maintained an impeccable safety record by strictly following traffic rules</p>
                     <p>Successfully operated as an independent contractor, balancing finances and customer satisfaction</p>
                 </div>
 
-
-
-
-
-
-
-
-
-
-
                 {/* Add other experiences in similar divs */}
             </div>
-            <div style={{ padding: '3rem', border: '1px solid #ccc', borderRadius: '10px', margin: '1rem' }}>
+            <div style={{ padding: '1rem', borderRadius: '10px', margin: '1rem' }}>
                 <h3>Contact</h3>
                 <p>Kartikrao Jevaji</p>
                 <p>Denver, CO | kartikinpublic@gmail.com</p>

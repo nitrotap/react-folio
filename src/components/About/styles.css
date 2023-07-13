@@ -113,3 +113,27 @@
       margin-right: 20px;
   }
 }
+
+.profileContainer {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+.profileContainer > div {
+  display: grid;
+  place-items: center;
+}
+
+.profileImage {
+  animation: fadeInDownBig;
+}
+
+.profileName {
+  animation: bounce;
+}
+
+@media (max-width: 400px) {
+  .profileContainer {
+    grid-template-columns: 1fr;
+  }
+}
