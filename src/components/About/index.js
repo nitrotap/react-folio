@@ -64,6 +64,7 @@ function About() {
                 <div>
                     <h1 className="profileName animate__animated animate__bounce">Kartik Jevaji</h1>
                 </div>
+
             </div>
 
 
