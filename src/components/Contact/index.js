@@ -31,9 +31,9 @@ function Contact() {
                 <div className="col s12 center-align">
                     <div className='card blue-grey'>
                         <p className='card-title'>Message me on LinkedIn</p>
-                        <div class='card-content'>
+                        <div className='card-content'>
                             <a href="https://www.linkedin.com/in/kjevaji/" target="_blank" rel="noreferrer">
-                                <i class="fab fa-linkedin fa-4x" style={{ backgroundColor: 'white', borderRadius: '0', padding: '5px' }}>
+                                <i className="fab fa-linkedin fa-4x" style={{ backgroundColor: 'white', borderRadius: '0', padding: '5px' }}>
                                 </i>
                             </a>
                         </div>
