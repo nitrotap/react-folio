@@ -1,24 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.ba65168a.css",
-    "main.js": "/static/js/main.1adda057.js",
+    "main.css": "/static/css/main.bdd15e80.css",
+    "main.js": "/static/js/main.8e584ea4.js",
     "static/js/787.612b19a2.chunk.js": "/static/js/787.612b19a2.chunk.js",
+    "static/media/lm-screenshot.png": "/static/media/lm-screenshot.e2f03192d0d84be0d6a1.png",
     "static/media/mt-background-4.png": "/static/media/mt-background-4.1f6ce3610a150c4705f6.png",
+    "static/media/brain-lift-ss.png": "/static/media/brain-lift-ss.1ab9a6722961fa4da22f.png",
     "static/media/mhc-screen-shot.png": "/static/media/mhc-screen-shot.03a303c004783aa899aa.png",
     "static/media/thg-screenshot.jpg": "/static/media/thg-screenshot.4aa1c8525c21f22b9251.jpg",
     "static/media/code-quiz-screen-shot.png": "/static/media/code-quiz-screen-shot.74e9b4c55610402c8795.png",
     "static/media/st-screen-shot.png": "/static/media/st-screen-shot.fde5482411d7424c04ef.png",
     "static/media/kj-thumbnail.jpg": "/static/media/kj-thumbnail.1e5f3521288073532e72.jpg",
-    "static/media/lm-screenshot.png": "/static/media/lm-screenshot.c959a74266864a222b9d.png",
     "static/media/pw-generator-screen-shot.png": "/static/media/pw-generator-screen-shot.4bb023cc24ed5d3764b3.png",
     "static/media/GitHub_Logo.png": "/static/media/GitHub_Logo.746ec8f0bc97208f903e.png",
     "index.html": "/index.html",
-    "main.ba65168a.css.map": "/static/css/main.ba65168a.css.map",
-    "main.1adda057.js.map": "/static/js/main.1adda057.js.map",
+    "main.bdd15e80.css.map": "/static/css/main.bdd15e80.css.map",
+    "main.8e584ea4.js.map": "/static/js/main.8e584ea4.js.map",
     "787.612b19a2.chunk.js.map": "/static/js/787.612b19a2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ba65168a.css",
-    "static/js/main.1adda057.js"
+    "static/css/main.bdd15e80.css",
+    "static/js/main.8e584ea4.js"
   ]
 }
