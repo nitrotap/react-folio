@@ -37,7 +37,7 @@ function About() {
                     <h2 style={{ padding: '1rem', backgroundColor: 'rgb(42,55,62)' }} className='lato-text'>Technical Skills</h2>
                 </div>
             </div>
-            <div className="">
+            <div className="animate__animated animate__fadeInUp animate__delay-1s">
                 <div className="v6_24">
                     <div style={{ backgroundColor: 'rgb(42,55,62)', padding: '1rem', marginBottom: '1rem' }}>
                         <div>
@@ -64,7 +64,7 @@ function About() {
 
                     <h2 style={{ padding: '1rem', backgroundColor: 'rgb(42,55,62)' }} className='lato-text'>Relevant Experience</h2>
                 </div>
-                <div className="v6_24">
+                <div className="v6_24 animate__animated animate__fadeInUp animate__delay-2s">
 
                     <div style={{ padding: '1rem', border: '1px solid #ccc', borderRadius: '10px', backgroundColor: 'rgb(42,55,62)', marginBottom: '1rem' }}>
                         <h4>Mental Health Check</h4>
