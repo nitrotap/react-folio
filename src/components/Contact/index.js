@@ -43,7 +43,7 @@ function Contact() {
 
                 </div>
             </section>
-            <div style={{ backgroundColor: '#14213d', padding: 10, marginTop: 15, marginBottom: 15, textAlign: 'center', overflow: 'visible' }}>
+            <div style={{ backgroundColor: '#14213d', padding: 10, marginTop: 15, marginBottom: 15, textAlign: 'center', overflow: 'visible' }} className='container'>
                 <div style={{
                     position: 'relative',
                     paddingBottom: '75%', // This value could be adjusted

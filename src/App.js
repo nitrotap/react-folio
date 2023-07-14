@@ -61,7 +61,7 @@ function App() {
       <main style={{ height: '90vh' }}>
         <Header handlePageChange={handlePageChange} currentLink={currentLink} setCurrentLink={setCurrentLink} >
         </Header>
-        <div className="container">
+        <div>
           {renderPage()}
           <Footer></Footer>
         </div>

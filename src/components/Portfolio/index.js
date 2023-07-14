@@ -73,7 +73,7 @@ function Portfolio() {
     const projectHandler = (projectList) => {
         // dynamically generate multiple JSX fragments to put together
         return (
-            <div style={{ padding: 10, marginTop: 15, backgroundColor: '#14213d', marginBottom: 15 }}>
+            <div style={{ padding: 10, marginTop: 15, backgroundColor: '#14213d', marginBottom: 15 }} className='container'>
                 <h3 className="center-align animate__animated animate__fadeInDown">
                     Portfolio
                 </h3>
