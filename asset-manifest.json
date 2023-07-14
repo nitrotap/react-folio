@@ -1,8 +1,11 @@
 {
   "files": {
-    "main.css": "/static/css/main.bdd15e80.css",
-    "main.js": "/static/js/main.f88b9a9a.js",
+    "main.css": "/static/css/main.d03886be.css",
+    "main.js": "/static/js/main.acf0247c.js",
     "static/js/787.612b19a2.chunk.js": "/static/js/787.612b19a2.chunk.js",
+    "static/media/mt-background.png": "/static/media/mt-background.669dac35001d3345c698.png",
+    "static/media/mt-background-3.png": "/static/media/mt-background-3.946f69e198389671578e.png",
+    "static/media/coder2.png": "/static/media/coder2.144cdac7d2058c664db4.png",
     "static/media/lm-screenshot.png": "/static/media/lm-screenshot.e2f03192d0d84be0d6a1.png",
     "static/media/mt-background-4.png": "/static/media/mt-background-4.1f6ce3610a150c4705f6.png",
     "static/media/brain-lift-ss.png": "/static/media/brain-lift-ss.1ab9a6722961fa4da22f.png",
@@ -14,12 +17,12 @@
     "static/media/pw-generator-screen-shot.png": "/static/media/pw-generator-screen-shot.4bb023cc24ed5d3764b3.png",
     "static/media/GitHub_Logo.png": "/static/media/GitHub_Logo.746ec8f0bc97208f903e.png",
     "index.html": "/index.html",
-    "main.bdd15e80.css.map": "/static/css/main.bdd15e80.css.map",
-    "main.f88b9a9a.js.map": "/static/js/main.f88b9a9a.js.map",
+    "main.d03886be.css.map": "/static/css/main.d03886be.css.map",
+    "main.acf0247c.js.map": "/static/js/main.acf0247c.js.map",
     "787.612b19a2.chunk.js.map": "/static/js/787.612b19a2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bdd15e80.css",
-    "static/js/main.f88b9a9a.js"
+    "static/css/main.d03886be.css",
+    "static/js/main.acf0247c.js"
   ]
 }
