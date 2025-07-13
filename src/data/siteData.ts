@@ -5,7 +5,7 @@ const sections = {
     type: "hero",
     variant: "showcase",
     title: "Kartik Jevaji",
-    subtitle: "Full Stack Web Developer | AI/LLM Specialist | Denver, CO",
+    subtitle: "Full Stack Web Developer | AI/LLM associate | Denver, CO",
     highlights: [
       "Innovative full-stack developer with expertise in modern web technologies, AI/LLM integration, and cross-platform development.",
       "Proven track record of delivering end-to-end solutions from requirements gathering to production deployment.",
@@ -14,7 +14,7 @@ const sections = {
     animation: "hero-animation",
     metadata: {
       title: "Kartik Jevaji - Full Stack Developer",
-      description: "Innovative full-stack developer and AI/LLM specialist based in Denver, CO.",
+      description: "Innovative full-stack developer and AI/LLM associate based in Denver, CO.",
       image: "/file.svg"
     }
   },
@@ -28,13 +28,13 @@ const sections = {
       "Combines strong technical skills with excellent communication abilities and a passion for creating meaningful impact through technology."
     ],
     highlights: [
-      "3+ years experience",
-      "AI/LLM Specialist",
+      "2+ years experience",
+      "AI/LLM associate",
       "Denver, CO"
     ],
     metadata: {
       title: "About Kartik Jevaji",
-      description: "Professional profile and summary of Kartik Jevaji, full stack developer and AI/LLM specialist.",
+      description: "Professional profile and summary of Kartik Jevaji, full stack developer and AI/LLM associate.",
     }
   },
   aboutFull: {
@@ -47,7 +47,7 @@ const sections = {
     ],
     metadata: {
       title: "About Kartik Jevaji",
-      description: "Professional profile and summary of Kartik Jevaji, full stack developer and AI/LLM specialist.",
+      description: "Professional profile and summary of Kartik Jevaji, full stack developer and AI/LLM associate.",
     }
   },
   techSkills: {
@@ -235,7 +235,7 @@ export const siteData = {
       title: "Home",
       metadata: {
         title: "Kartik Jevaji | Full Stack Web Developer",
-        description: "Portfolio of Kartik Jevaji (@nitrotap), Full Stack Web Developer, AI/LLM specialist, and cross-platform engineer.",
+        description: "Portfolio of Kartik Jevaji (@nitrotap), Full Stack Web Developer, AI/LLM associate, and cross-platform engineer.",
         keywords: ["Kartik Jevaji", "Full Stack Developer", "AI", "LLM", "Portfolio", "Denver"],
         image: "/file.svg"
       },
