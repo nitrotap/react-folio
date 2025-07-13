@@ -20,6 +20,7 @@ const config: Config = {
         },
         wheat: {
           DEFAULT: '#F6E05E', // Wheat (Accent)
+          50: '#FFFBEA',
           100: '#F9FAFB', // Background
         },
         cadet_gray: {

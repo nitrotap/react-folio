@@ -93,9 +93,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ section, variant }) => {
 
     // Fix: section.badge and section.stats do not exist on type 'HeroSection'.
     // Use fallback values directly, or extend the type if needed.
-    const badge: { label: string; icon?: string } = { label: "Featured Portfolio", icon: "Star" };
+    const badge: { label: string; icon?: string } = { label: "Featured Project", icon: "Star" };
     const stats: { label: string; value: string }[] = [
-      { label: "Years Experience", value: "3+" },
+      { label: "Years Experience", value: "2+" },
       { label: "Projects", value: "25+" },
       { label: "Certifications", value: "5" },
     ];
@@ -126,7 +126,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ section, variant }) => {
             <div className="inline-flex items-center px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-cadet_gray-200 mb-8 shadow-sm hover:shadow-md transition-all duration-300">
               {/* Star icon */}
               <svg className="w-4 h-4 text-yellow-500 mr-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 17.75l-6.172 3.245 1.179-6.873L2 9.755l6.914-1.004L12 2.5l3.086 6.251L22 9.755l-5.007 4.367 1.179 6.873z" /></svg>
-              <span className="text-sm font-medium text-cadet_gray-700">{badge.label}</span>
+              <span className="text-sm font-medium text-cadet_gray-700"><Link href="/projects">{badge.label}</Link></span>
             </div>
             {/* Main heading */}
             <h1 className="text-5xl md:text-7xl font-bold text-coyote-900 mb-6 leading-tight">

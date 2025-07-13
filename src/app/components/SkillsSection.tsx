@@ -58,7 +58,7 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({ section, variant }) => {
         {description && <p className="mb-8 text-lg text-cadet_gray-700 max-w-2xl">{description}</p>}
         <div className="space-y-8">
           {projects.map((project, i) => (
-            <div key={i} className="bg-wheat-50 border border-wheat-200 rounded-2xl shadow-md p-6">
+            <div key={i} className=" border border-wheat-200 rounded-2xl shadow-md p-6">
               <div className="text-xl font-semibold text-coyote-700 mb-3">{project.name}</div>
               {Array.isArray(project.techStack) && (
                 <div className="flex flex-wrap gap-2">
@@ -87,7 +87,7 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({ section, variant }) => {
         {description && <p className="mb-8 text-lg text-cadet_gray-700 max-w-2xl">{description}</p>}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {groups.map((group, i) => (
-            <div key={i} className="bg-wheat-50 border border-wheat-200 rounded-2xl shadow-md p-6 flex flex-col items-center transition-transform hover:scale-105 hover:shadow-lg">
+            <div key={i} className=" border border-wheat-200 rounded-2xl shadow-md p-6 flex flex-col items-center transition-transform hover:scale-105 hover:shadow-lg">
               <div className="text-lg md:text-xl font-semibold text-coyote-700 mb-3">{group.title}</div>
               <div className="flex flex-wrap gap-2 justify-center">
                 {group.items.map((item, j) => (
@@ -116,7 +116,7 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({ section, variant }) => {
                   <td className="py-2">
                     <div className="flex flex-wrap gap-2">
                       {group.items.map((item, j) => (
-                        <span key={j} className="bg-wheat-100 text-cadet_gray-900 px-3 py-1 rounded-full text-sm font-medium shadow-sm">{item}</span>
+                        <span key={j} className=" text-cadet_gray-900 px-3 py-1 rounded-full text-sm font-medium shadow-sm">{item}</span>
                       ))}
                     </div>
                   </td>

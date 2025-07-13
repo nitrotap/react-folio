@@ -49,13 +49,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 min-h-screen flex flex-col`}>
+        {/* Sitewide animated background */}
+        <div className="fixed inset-0 -z-10 pointer-events-none">
+          <div className="absolute top-20 left-20 w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
+          <div className="absolute top-40 right-20 w-72 h-72 bg-purple-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse animation-delay-2000"></div>
+          <div className="absolute -bottom-8 left-40 w-72 h-72 bg-primary-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse animation-delay-4000"></div>
+          {/* Floating elements */}
+          <div className="absolute top-1/4 left-10 w-4 h-4 bg-blue-400 rounded-full animate-bounce"></div>
+          <div className="absolute top-1/3 right-10 w-6 h-6 bg-purple-400 rounded-full animate-bounce animation-delay-1000"></div>
+        </div>
         <header className="w-full py-6 bg-white shadow-sm sticky top-0 z-30">
           <div className="container mx-auto px-4 flex items-center justify-between">
             <h1 className="text-2xl font-bold">Kartik Jevaji</h1>
             <Nav />
           </div>
         </header>
-        <main className="flex-1 container mx-auto px-4 py-8 flex flex-col items-center w-full">
+        <main className="glass flex-1 container mx-auto px-4 py-8 flex flex-col items-center w-full">
           {children}
         </main>
         <footer className="w-full py-4 bg-white border-t text-center text-sm text-gray-500 mt-8">

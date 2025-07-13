@@ -11,7 +11,7 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({ section }) => (
     <h2 className="text-3xl md:text-4xl font-bold mb-6 text-coyote-700 tracking-tight">{section.title}</h2>
     <div className="grid md:grid-cols-2 gap-10">
       {section.projects?.map((project: Project, i: number) => (
-        <div key={i} className="bg-wheat-100 rounded-xl shadow-lg p-8 flex flex-col items-center transition-transform hover:scale-105">
+        <div key={i} className=" rounded-xl shadow-lg p-8 flex flex-col items-center transition-transform hover:scale-105">
           {project.screenshot && (
             <img src={project.screenshot} alt={project.name} className="w-full h-44 object-cover rounded mb-4" />
           )}

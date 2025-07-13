@@ -44,7 +44,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ section, variant }) => {
           {highlights.length > 0 && (
             <div className="mt-8 flex flex-wrap gap-3">
               {highlights.map((h, i) => (
-                <span key={i} className="bg-wheat-100 text-coyote-700 px-4 py-2 rounded-full text-base font-medium shadow">{h}</span>
+                <span key={i} className=" text-coyote-700 px-4 py-2 rounded-full text-base font-medium shadow">{h}</span>
               ))}
             </div>
           )}
@@ -66,7 +66,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ section, variant }) => {
             ))}
           </div>
           {highlights.length > 0 && (
-            <div className="flex-1 bg-wheat-100 border border-border rounded-xl shadow-md p-8">
+            <div className="flex-1  border border-border rounded-xl shadow-md p-8">
               <h3 className="font-heading text-2xl font-semibold text-coyote-700 mb-6">Highlights</h3>
               <ul className="space-y-4">
                 {highlights.map((h, i) => (

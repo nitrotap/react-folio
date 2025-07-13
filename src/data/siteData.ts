@@ -28,7 +28,7 @@ const sections = {
       "Combines strong technical skills with excellent communication abilities and a passion for creating meaningful impact through technology."
     ],
     highlights: [
-      "10+ years experience",
+      "3+ years experience",
       "AI/LLM Specialist",
       "Denver, CO"
     ],
