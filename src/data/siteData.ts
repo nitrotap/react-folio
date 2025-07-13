@@ -210,7 +210,7 @@ const sections = {
     type: "contact",
     title: "Contact",
     contactMethods: [
-      { type: "Email", value: "kjevaji@gmail.com" },
+      { type: "Email", value: "kartikinpublic@gmail.com" },
       { type: "GitHub", value: "@nitrotap", url: "https://github.com/nitrotap" },
       { type: "LinkedIn", value: "kjevaji", url: "https://www.linkedin.com/in/kjevaji/" },
       { type: "Portfolio", value: "nitrotap.dev", url: "https://www.nitrotap.dev" }

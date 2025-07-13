@@ -9,8 +9,9 @@ export async function generateStaticParams() {
   return siteData.pages.map((page) => ({ slug: page.slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const page = siteData.pages.find(async (p) => p.slug === (await params).slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const page = siteData.pages.find((p) => p.slug === slug);
   if (!page) return {};
   return {
     title: page.metadata.title,
@@ -26,12 +27,13 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 const GITHUB_USERNAME = "nitrotap";
 
-export default async function Page({ params }: { params: { slug: string } }) {
-  const page = siteData.pages.find((p) => p.slug === params.slug);
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const page = siteData.pages.find((p) => p.slug === slug);
   if (!page) return <div className="text-center py-20">Page not found.</div>;
 
   // If this is the projects page, fetch GitHub projects and inject them
-  if (params.slug === "projects") {
+  if (slug === "projects") {
     let githubProjects: Project[] = [];
     try {
       const ghProjects = (await fetchGithubProjects(GITHUB_USERNAME)).sort((a, b) => new Date(b.pushed_at).getTime() - new Date(a.pushed_at).getTime());

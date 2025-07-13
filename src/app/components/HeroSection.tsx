@@ -1,5 +1,6 @@
 import React from "react";
 import type { HeroSection as HeroSectionType } from "@/data/types";
+import Link from "next/link";
 
 interface HeroSectionProps {
   section: HeroSectionType;
@@ -33,6 +34,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({ section, variant }) => {
               ))}
             </ul>
           )}
+          {/* My Image */}
+          <img
+            src="/images/kj-img.jpg"
+            alt="KJ smiling by a lake"
+            className="w-32 h-32 md:w-48 md:h-48 rounded-full shadow-lg object-cover mx-auto mb-6 border-4 border-white"
+            style={{ animationDelay: '0.5s' }}
+          />
           {/* Animated Hero Art */}
           <div className="w-28 h-28 md:w-40 md:h-40 rounded-full bg-cerulean-700 animate-bounce shadow-lg mx-auto mt-4" />
         </div>
@@ -58,8 +66,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({ section, variant }) => {
             </ul>
           )}
         </div>
-        {/* Right: Animated Art */}
-        <div className="flex-1 flex items-center justify-center relative">
+        {/* Right: Animated Art + My Image */}
+        <div className="flex-1 flex flex-col items-center justify-center relative">
+          <img
+            src="/images/kj-img.jpg"
+            alt="KJ smiling by a lake"
+            className="w-40 h-40 md:w-64 md:h-64 rounded-full shadow-lg object-cover mb-6 border-4 border-white"
+            style={{ animationDelay: '0.5s' }}
+          />
           <div className="w-56 h-56 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-cerulean-700 via-wheat-100 to-coyote-700 shadow-lg animate-bounce-slow flex items-center justify-center">
             <svg width="120" height="120" className="opacity-80 animate-spin-slow" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="60" cy="60" r="50" stroke="#2B6CB0" strokeWidth="8" fill="none" />
@@ -76,8 +90,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ section, variant }) => {
   if (selectedVariant === "showcase") {
     // NOTE: For real icons, install lucide-react and import { ArrowRight, Play, Star } from 'lucide-react'.
     // The SVGs below are inline for portability.
-    const badge: { label: string; icon?: string } = section.badge || { label: "Featured Portfolio", icon: "Star" };
-    const stats: { label: string; value: string }[] = section.stats || [
+
+    // Fix: section.badge and section.stats do not exist on type 'HeroSection'.
+    // Use fallback values directly, or extend the type if needed.
+    const badge: { label: string; icon?: string } = { label: "Featured Portfolio", icon: "Star" };
+    const stats: { label: string; value: string }[] = [
       { label: "Years Experience", value: "3+" },
       { label: "Projects", value: "25+" },
       { label: "Certifications", value: "5" },
@@ -98,6 +115,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({ section, variant }) => {
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
+            {/* My Image */}
+            <img
+              src="/images/kj-img.jpg"
+              alt="KJ smiling by a lake"
+              className="w-40 h-40 md:w-56 md:h-56 rounded-full shadow-lg object-cover mx-auto mb-8 border-4 border-white"
+              style={{ animationDelay: '0.5s' }}
+            />
             {/* Badge */}
             <div className="inline-flex items-center px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-cadet_gray-200 mb-8 shadow-sm hover:shadow-md transition-all duration-300">
               {/* Star icon */}
@@ -113,18 +137,19 @@ const HeroSection: React.FC<HeroSectionProps> = ({ section, variant }) => {
             </h1>
             {/* Subheading */}
             <p className="text-xl md:text-2xl text-cadet_gray-700 mb-12 max-w-3xl mx-auto leading-relaxed">
-              {section.description || "Transform your ideas into reality with cutting-edge web and AI solutions. Experience the future of digital innovation today."}
+              {"Transform your ideas into reality with cutting-edge web and AI solutions. Experience the future of digital innovation today."}
             </p>
             {/* CTA buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-              <button className="group bg-coyote-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-coyote-800 transition-all duration-300 flex items-center shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+              <Link href="/experience" className="group bg-coyote-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-coyote-800 transition-all duration-300 flex items-center shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                 Experience
                 <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" /></svg>
-              </button>
-              <button className="group bg-white/80 backdrop-blur-sm text-coyote-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-white transition-all duration-300 flex items-center border border-cadet_gray-200 shadow-sm hover:shadow-md">
+
+              </Link>
+              <Link href="/projects" className="group bg-white/80 backdrop-blur-sm text-coyote-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-white transition-all duration-300 flex items-center border border-cadet_gray-200 shadow-sm hover:shadow-md">
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" /></svg>
                 Projects
-              </button>
+              </Link>
             </div>
             {/* Stats */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
