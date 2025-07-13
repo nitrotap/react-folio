@@ -1,3 +1,5 @@
+import { siteData } from "./siteData";
+
 export interface NavLink {
   name: string;
   href: string;
@@ -5,26 +7,9 @@ export interface NavLink {
   isActive?: boolean;
 }
 
-
-export const nav: NavLink[] = [
-  {
-    name: "Home",
-    href: "/",
-  },
-  {
-    name: "About",
-    href: "/about",
-  },
-  {
-    name: "Projects",
-    href: "/projects",
-  },
-  {
-    name: "Contact",
-    href: "/contact",
-  },
-  {
-    name: "Resume",
-    href: "/resume",
-  },
-];
+export function getNavLinks(): NavLink[] {
+  return siteData.pages.map(page => ({
+    name: page.title,
+    href: page.slug === "home" ? "/" : `/${page.slug}`,
+  }));
+}
