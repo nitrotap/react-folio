@@ -3,6 +3,7 @@ import type { ProjectSection, Project } from "@/data/types";
 
 interface ProjectSectionProps {
   section: ProjectSection;
+  variant?: string;
 }
 
 const ProjectSection: React.FC<ProjectSectionProps> = ({ section }) => (

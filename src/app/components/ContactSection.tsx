@@ -3,6 +3,7 @@ import type { ContactSection, ContactMethod } from "@/data/types";
 
 interface ContactSectionProps {
   section: ContactSection;
+  variant?: string;
 }
 
 const ContactSection: React.FC<ContactSectionProps> = ({ section }) => (

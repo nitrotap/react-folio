@@ -3,6 +3,7 @@ import type { ExperienceSection, Experience } from "@/data/types";
 
 interface ExperienceSectionProps {
   section: ExperienceSection;
+  variant?: string;
 }
 
 const ExperienceSection: React.FC<ExperienceSectionProps> = ({ section }) => (

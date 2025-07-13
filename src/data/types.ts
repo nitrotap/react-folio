@@ -3,12 +3,18 @@ export interface Section {
   id: string;
   type: string;
   title: string;
+  variant?: string;
   subtitle?: string;
   paragraphs?: string[];
   media?: string[];
-  lists?: string[][];
+  lists?: (string[] | SkillGroup[]);
   extras?: unknown[];
   metadata?: SectionMetadata;
+}
+
+export interface SkillGroup {
+  title: string;
+  items: string[];
 }
 
 export interface SectionMetadata {

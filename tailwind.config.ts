@@ -9,65 +9,44 @@ const config: Config = {
     extend: {
       colors: {
         coyote: {
-          DEFAULT: '#7a542e',
-          100: '#181109',
-          200: '#312213',
-          300: '#49321c',
-          400: '#624325',
-          500: '#7a542e',
-          600: '#ac7641',
-          700: '#c7986a',
-          800: '#d9bb9c',
-          900: '#ecddcd',
-        },
-        rich_black: {
-          DEFAULT: '#031926',
-          100: '#010508',
-          200: '#010a0f',
-          300: '#020f17',
-          400: '#02141e',
-          500: '#031926',
-          600: '#0a537d',
-          700: '#118cd3',
-          800: '#51b6f1',
-          900: '#a8dbf8',
-        },
-        wheat: {
-          DEFAULT: '#ead2ac',
-          100: '#412f10',
-          200: '#835d21',
-          300: '#c48c31',
-          400: '#dab06c',
-          500: '#ead2ac',
-          600: '#efdcbe',
-          700: '#f3e5ce',
-          800: '#f7edde',
-          900: '#fbf6ef',
-        },
-        cadet_gray: {
-          DEFAULT: '#9cafb7',
-          100: '#1c2427',
-          200: '#39484e',
-          300: '#556b75',
-          400: '#738e9a',
-          500: '#9cafb7',
-          600: '#afbec5',
-          700: '#c3ced3',
-          800: '#d7dfe2',
-          900: '#ebeff0',
+          DEFAULT: '#1A365D', // Coyote Blue (Primary)
+          700: '#1A365D',
+          800: '#153052',
         },
         cerulean: {
-          DEFAULT: '#4281a4',
-          100: '#0d1a21',
-          200: '#1a3442',
-          300: '#274e62',
-          400: '#346883',
-          500: '#4281a4',
-          600: '#5f9dbf',
-          700: '#87b6cf',
-          800: '#afcedf',
-          900: '#d7e7ef',
+          DEFAULT: '#2B6CB0', // Cerulean (Secondary)
+          700: '#2B6CB0',
+          800: '#234E70',
         },
+        wheat: {
+          DEFAULT: '#F6E05E', // Wheat (Accent)
+          100: '#F9FAFB', // Background
+        },
+        cadet_gray: {
+          DEFAULT: '#4A5568', // Cadet Gray (Text Secondary)
+          700: '#4A5568',
+        },
+        background: '#F9FAFB',
+        surface: '#FFFFFF',
+        'text-primary': '#1A202C',
+        'text-secondary': '#4A5568',
+        border: '#E2E8F0',
+        success: '#38A169',
+        warning: '#D69E2E',
+        error: '#E53E3E',
+      },
+      fontFamily: {
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        heading: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      },
+      borderRadius: {
+        'lg': '0.5rem', // 8px
+        'xl': '1rem',   // 16px
+        '2xl': '1.5rem',// 24px
+      },
+      boxShadow: {
+        'md': '0 2px 8px rgba(26, 54, 93, 0.06)',
+        'lg': '0 4px 16px rgba(26, 54, 93, 0.10)',
       },
       keyframes: {
         'fade-in': {

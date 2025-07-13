@@ -5,7 +5,7 @@ import { getNavLinks } from "@/data/nav";
 const Nav = () => {
   const navLinks = getNavLinks();
   return (
-    <nav className="w-full py-4 bg-rich_black-500 shadow flex items-center justify-between px-8">
+    <nav className="w-full py-4 bg-rich_black-500 flex items-center justify-between px-8">
       {/* Branding/Logo */}
       <div className="flex items-center">
         <Link href="/" className="text-coyote-600 font-extrabold text-2xl tracking-tight hover:text-coyote-700 transition-colors">

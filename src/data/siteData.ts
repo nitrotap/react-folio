@@ -3,6 +3,7 @@ const sections = {
   hero: {
     id: "hero",
     type: "hero",
+    variant: "showcase",
     title: "Kartik Jevaji",
     subtitle: "Full Stack Web Developer | AI/LLM Specialist | Denver, CO",
     highlights: [
@@ -20,10 +21,16 @@ const sections = {
   aboutShort: {
     id: "about-short",
     type: "about",
-    title: "Professional Profile",
+    variant: 'split',
+    title: "Profile",
     paragraphs: [
       "Innovative full-stack developer with expertise in modern web technologies, AI/LLM integration, and cross-platform development. Proven track record of delivering end-to-end solutions from requirements gathering to production deployment, with specialized experience in legacy system modernization and mental health applications.",
       "Combines strong technical skills with excellent communication abilities and a passion for creating meaningful impact through technology."
+    ],
+    highlights: [
+      "10+ years experience",
+      "AI/LLM Specialist",
+      "Denver, CO"
     ],
     metadata: {
       title: "About Kartik Jevaji",
@@ -46,23 +53,35 @@ const sections = {
   techSkills: {
     id: "tech-skills",
     type: "skills",
+    variant: "table",
     title: "Technical Expertise",
     lists: [
-      ["JavaScript", "TypeScript", "PHP", "HTML", "CSS", "SQL", "Java", "Python", "R", "SAS", "OCaml", "ReasonML"],
-      ["React", "ReasonReact", "Next.js", "Angular", "Ionic", "jQuery", "Material UI", "Chart.js", "HTML5", "CSS3", "Materialize", "Handlebars.js", "Service Workers", "PWAs", "Capacitor", "Cordova"],
-      ["Node.js/npm", "Express.js", "Apache Server", "PHP", "Composer", "Apollo Server", "GraphQL", "RESTful APIs", "Jest", "Docker", "WordPress", "Custom Plugin Development", "COBOL", "Regex Parsing"],
-      ["Figma", "Sketch", "Wireframing", "UI/UX Design", "Style Guide Development"],
-      ["Jest", "Playwright", "End-to-End Testing", "Unit Testing", "Integration Testing"],
-      ["MySQL", "PostgreSQL", "MongoDB", "Mongoose", "Sequelize", "MariaDB", "NoSQL", "JAWSDB"],
-      ["AWS", "Heroku", "Vercel", "Ubuntu Linux", "CI/CD Pipelines"],
-      ["Anthropic Claude", "OpenAI GPT-4o", "OpenAI Assistants API", "Qwen 2.5 Coder", "Llama", "Hugging Face", "LangChain", "RAG", "Model Fine-tuning", "Synthetic Data Generation", "Prompt Engineering", "LLM Tracing", "Generative UI", "Kaggle"],
-      ["Google Analytics", "Google Search Console", "Bing Web Tools", "SEO Optimization"],
-      ["Git/GitHub", "GitLab", "Jupyter", "Jira", "Confluence", "Notion", "Agile & Waterfall workflows", "Functional & OOP paradigms", "Microsoft Office Suite", "Google Workspace & APIs"],
-      ["Web Applications", "Android", "iOS", "Progressive Web Apps (PWAs)"]
+      { title: "Languages", items: ["JavaScript", "TypeScript", "PHP", "HTML", "CSS", "SQL", "Java", "Python", "R", "SAS", "OCaml", "ReasonML"] },
+      { title: "Frameworks & Libraries", items: ["React", "ReasonReact", "Next.js", "Angular", "Ionic", "jQuery", "Material UI", "Chart.js", "HTML5", "CSS3", "Materialize", "Handlebars.js", "Service Workers", "PWAs", "Capacitor", "Cordova"] },
+      { title: "Backend & DevOps", items: ["Node.js/npm", "Express.js", "Apache Server", "PHP", "Composer", "Apollo Server", "GraphQL", "RESTful APIs", "Jest", "Docker", "WordPress", "Custom Plugin Development", "COBOL", "Regex Parsing"] },
+      { title: "Design & UI/UX", items: ["Figma", "Sketch", "Wireframing", "UI/UX Design", "Style Guide Development"] },
+      { title: "Testing", items: ["Jest", "Playwright", "End-to-End Testing", "Unit Testing", "Integration Testing"] },
+      { title: "Databases", items: ["MySQL", "PostgreSQL", "MongoDB", "Mongoose", "Sequelize", "MariaDB", "NoSQL", "JAWSDB"] },
+      { title: "Cloud & Deployment", items: ["AWS", "Heroku", "Vercel", "Ubuntu Linux", "CI/CD Pipelines"] },
+      { title: "AI/LLM & Data Science", items: ["Anthropic Claude", "OpenAI GPT-4o", "OpenAI Assistants API", "Qwen 2.5 Coder", "Llama", "Hugging Face", "LangChain", "RAG", "Model Fine-tuning", "Synthetic Data Generation", "Prompt Engineering", "LLM Tracing", "Generative UI", "Kaggle"] },
+      { title: "Analytics & SEO", items: ["Google Analytics", "Google Search Console", "Bing Web Tools", "SEO Optimization"] },
+      { title: "Productivity & Workflow", items: ["Git/GitHub", "GitLab", "Jupyter", "Jira", "Confluence", "Notion", "Agile & Waterfall workflows", "Functional & OOP paradigms", "Microsoft Office Suite", "Google Workspace & APIs"] },
+      { title: "Platforms", items: ["Web Applications", "Android", "iOS", "Progressive Web Apps (PWAs)"] }
     ],
     metadata: {
       title: "Technical Skills - Kartik Jevaji",
       description: "Technical skills and expertise of Kartik Jevaji, including programming languages, frameworks, databases, and more."
+    }
+  },
+  techSkillsProjectBadges: {
+    id: "tech-skills-project-badges",
+    type: "skills",
+    variant: "project-badges",
+    title: "Project Tech Stacks",
+    projects: [] as import("./types").Project[],
+    metadata: {
+      title: "Project Tech Stacks - Kartik Jevaji",
+      description: "Badges for technologies used in featured projects by Kartik Jevaji."
     }
   },
   projects: {
@@ -99,7 +118,7 @@ const sections = {
     experiences: [
       {
         company: "Phase Change Software",
-        title: "Software Engineer",
+        title: "Junior Software Engineer",
         period: "2022 – Present",
         location: "Denver, CO",
         highlights: [
@@ -124,7 +143,7 @@ const sections = {
       {
         company: "Uber (Independent Contractor)",
         title: "Driver",
-        period: "Present",
+        period: "2022",
         location: "Denver, CO",
         highlights: [
           "Provided excellent service to a diverse passenger base.",
@@ -135,7 +154,7 @@ const sections = {
       {
         company: "Alzheimer's Association",
         title: "Volunteer - Data Entry/Tech Support",
-        period: "2017 – Present",
+        period: "2017 – 2022",
         location: "Denver, CO",
         highlights: [
           "Applied critical thinking to ensure accuracy of key database identifiers.",
@@ -203,6 +222,9 @@ const sections = {
   }
 };
 
+// After defining sections.projects, assign its projects to techSkillsProjectBadges.projects
+sections.techSkillsProjectBadges.projects = sections.projects.projects;
+
 // 2. Reference sections in pages
 export const siteData = {
   name: "Kartik Jevaji",
@@ -222,6 +244,7 @@ export const siteData = {
         { ...sections.aboutShort },
         { ...sections.experience },
         { ...sections.techSkills },
+        { ...sections.techSkillsProjectBadges }, // Add here
       ]
     },
     {

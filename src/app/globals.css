@@ -1,9 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #fff;
-  /* wheat-100 */
-  --foreground: #f7edde;
+  --background: #F9FAFB;
+  --foreground: #1A202C;
+  /* Dark text */
 }
 
 @theme inline {
@@ -23,7 +24,22 @@
 
 body {
   background: var(--background);
-  color: #031926;
-  /* rich_black-500 for better contrast */
-  font-family: Arial, Helvetica, sans-serif;
+  color: #1A202C;
+  /* Ensure dark text */
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #1A365D;
+  /* Dark, strong heading color */
 }

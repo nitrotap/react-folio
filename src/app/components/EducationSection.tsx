@@ -3,6 +3,7 @@ import type { EducationSection, Education } from "@/data/types";
 
 interface EducationSectionProps {
   section: EducationSection;
+  variant?: string;
 }
 
 const EducationSection: React.FC<EducationSectionProps> = ({ section }) => (
