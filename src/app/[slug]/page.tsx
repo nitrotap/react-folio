@@ -79,11 +79,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     };
     return (
       <>
-        <main>
-          {dynamicPage.sections.map((section) => (
-            <Section key={section.id} section={section} />
-          ))}
-        </main>
+        {dynamicPage.sections.map((section) => (
+          <Section key={section.id} section={section} />
+        ))}
         <Footer />
       </>
     );
@@ -92,11 +90,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   // Default: static rendering
   return (
     <>
-      <main>
-        {page.sections.map((section) => (
-          <Section key={section.id} section={section} />
-        ))}
-      </main>
+      {page.sections.map((section) => (
+        <Section key={section.id} section={section} />
+      ))}
       <Footer />
     </>
   );

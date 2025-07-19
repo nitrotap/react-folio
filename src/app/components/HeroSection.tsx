@@ -163,9 +163,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ section, variant }) => {
           </div>
         </div>
         {/* Floating elements */}
-        <div className="absolute top-1/4 left-10 w-4 h-4 bg-cerulean-400 rounded-full animate-bounce"></div>
+        {/* <div className="absolute top-1/4 left-10 w-4 h-4 bg-cerulean-400 rounded-full animate-bounce"></div>
         <div className="absolute top-1/3 right-10 w-6 h-6 bg-coyote-400 rounded-full animate-bounce animation-delay-1000"></div>
-        <div className="absolute bottom-1/4 left-1/4 w-3 h-3 bg-wheat-400 rounded-full animate-bounce animation-delay-2000"></div>
+        <div className="absolute bottom-1/4 left-1/4 w-3 h-3 bg-wheat-400 rounded-full animate-bounce animation-delay-2000"></div> */}
       </section>
     );
   }

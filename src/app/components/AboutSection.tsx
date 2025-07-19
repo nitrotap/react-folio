@@ -18,7 +18,6 @@ const AboutSection: React.FC<AboutSectionProps> = ({ section, variant }) => {
   const highlights = getHighlights(section);
   const selectedVariant = variant || section.variant || 'classic';
 
-  // Variant 1: Classic (improved)
   if (selectedVariant === 'classic') {
     return (
       <section id={section.id} className="py-16 md:py-24 max-w-3xl mx-auto">
@@ -31,10 +30,9 @@ const AboutSection: React.FC<AboutSectionProps> = ({ section, variant }) => {
     );
   }
 
-  // Variant 2: Card/Panel
   if (selectedVariant === 'card') {
     return (
-      <section id={section.id} className="py-16 md:py-24 flex justify-center">
+      <section id={section.id} className="py-16 md:py-24 flex justify-center bg-white/50">
         <div className="bg-surface border border-border rounded-xl shadow-md p-10 max-w-2xl w-full">
           <h2 className="font-heading text-4xl md:text-5xl font-bold mb-4 text-coyote-700 tracking-tight leading-tight">{section.title}</h2>
           {description && <p className="mb-8 text-lg text-cadet_gray-700 max-w-2xl font-sans">{description}</p>}
@@ -66,8 +64,8 @@ const AboutSection: React.FC<AboutSectionProps> = ({ section, variant }) => {
             ))}
           </div>
           {highlights.length > 0 && (
-            <div className="flex-1  border border-border rounded-xl shadow-md p-8">
-              <h3 className="font-heading text-2xl font-semibold text-coyote-700 mb-6">Highlights</h3>
+            <div className="flex-1  border border-border rounded-xl shadow-md p-8 bg-white/50">
+              <h3 className="font-heading text-2xl font-semibold text-coyote-700 mb-6 ">Highlights</h3>
               <ul className="space-y-4">
                 {highlights.map((h, i) => (
                   <li key={i} className="text-cadet_gray-900 text-lg leading-snug font-sans before:content-['•'] before:mr-2 before:text-cerulean-700">{h}</li>

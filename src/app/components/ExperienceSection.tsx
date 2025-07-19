@@ -11,7 +11,7 @@ const ExperienceSection: React.FC<ExperienceSectionProps> = ({ section }) => (
     <h2 className="text-3xl md:text-4xl font-bold mb-6 text-coyote-700 tracking-tight">{section.title}</h2>
     <div className="space-y-8">
       {section.experiences?.map((exp: Experience, i: number) => (
-        <div key={i} className=" rounded-xl p-6 shadow-md">
+        <div key={i} className=" rounded-xl p-6 shadow- bg-white/80">
           <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
             <span className="font-bold text-lg md:text-xl text-rich_black-500">{exp.title}</span>
             <span className="text-cadet_gray-600 text-base md:text-lg">{exp.company} | {exp.period}</span>

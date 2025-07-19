@@ -25,11 +25,9 @@ export default function Home() {
   const page = siteData.pages[0];
   return (
     <>
-      <main>
-        {page.sections.map((section) => (
-          <Section key={section.id} section={section} />
-        ))}
-      </main>
+      {page.sections.map((section) => (
+        <Section key={section.id} section={section} />
+      ))}
       <Footer />
     </>
   );
