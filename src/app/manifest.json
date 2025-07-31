@@ -1,0 +1,24 @@
+{
+  "name": "Kartik Jevaji's Portfolio",
+  "short_name": "Portfolio",
+  "description": "The personal portfolio of nitrotap, showcasing projects, skills, and experience.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0f172a",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48 72x72 96x96 128x128 256x256",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/images/kj-img.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "lang": "en"
+}
