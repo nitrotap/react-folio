@@ -5,7 +5,7 @@ const sections = {
     type: "hero",
     variant: "showcase",
     title: "Kartik Jevaji",
-    subtitle: "Full Stack Web Developer | AI/LLM associate | Denver, CO",
+    subtitle: "Software Engineer | Full Stack Web Developer | Denver, CO",
     highlights: [
       "Innovative full-stack developer with expertise in modern web technologies, AI/LLM integration, and cross-platform development.",
       "Proven track record of delivering end-to-end solutions from requirements gathering to production deployment.",
