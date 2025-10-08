@@ -5,7 +5,8 @@ import type {
   ProjectSection as ProjectSectionType,
   ExperienceSection as ExperienceSectionType,
   EducationSection as EducationSectionType,
-  ContactSection as ContactSectionType
+  ContactSection as ContactSectionType,
+  BlogSection as BlogSectionType
 } from "@/data/types";
 import HeroSectionComponent from "./HeroSection";
 import AboutSection from "./AboutSection";
@@ -14,6 +15,7 @@ import ProjectSectionComponent from "./ProjectSection";
 import ExperienceSectionComponent from "./ExperienceSection";
 import EducationSectionComponent from "./EducationSection";
 import ContactSectionComponent from "./ContactSection";
+import BlogSectionComponent from "./BlogSection";
 
 interface SectionProps {
   section: SectionType;
@@ -35,6 +37,8 @@ const Section: React.FC<SectionProps> = ({ section }) => {
       return <EducationSectionComponent section={section as EducationSectionType} variant={section.variant} />;
     case "contact":
       return <ContactSectionComponent section={section as ContactSectionType} variant={section.variant} />;
+    case "blog":
+      return <BlogSectionComponent section={section as BlogSectionType} variant={section.variant} />;
     default:
       return null;
   }

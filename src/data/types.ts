@@ -50,6 +50,17 @@ export interface ContactSection extends Section {
   contactMethods: ContactMethod[];
 }
 
+export interface BlogSection extends Section {
+  type: 'blog';
+  posts: BlogPost[];
+}
+
+export interface BlogPost {
+  slug: string;
+  title: string;
+  excerpt?: string;
+}
+
 export interface Page {
   slug: string;
   title: string;
