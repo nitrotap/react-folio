@@ -15,9 +15,9 @@ export const metadata: Metadata = {
 };
 
 export async function generateStaticParams() {
-  // Exclude 'home' from the slugs for dynamic pages
+  // Exclude 'home' and 'blog' from the slugs for dynamic pages
   return siteData.pages
-    .filter(page => page.slug !== "home")
+    .filter(page => page.slug !== "home" && page.slug !== "blog")
     .map(page => ({ slug: page.slug }));
 }
 

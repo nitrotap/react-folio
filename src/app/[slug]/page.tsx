@@ -6,7 +6,10 @@ import { fetchGithubProjects } from "@/data/fetchGithubProjects";
 import type { Project } from "@/data/types";
 
 export async function generateStaticParams() {
-  return siteData.pages.map((page) => ({ slug: page.slug }));
+  // Exclude 'blog' since it has its own route structure
+  return siteData.pages
+    .filter(page => page.slug !== "blog")
+    .map((page) => ({ slug: page.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {

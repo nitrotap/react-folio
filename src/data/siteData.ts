@@ -312,6 +312,17 @@ export const siteData = {
       sections: [
         { ...sections.contact }
       ]
+    },
+    {
+      slug: "blog",
+      title: "Blog",
+      metadata: {
+        title: "Blog - Kartik Jevaji",
+        description: "Read articles about web development, technology, and software engineering.",
+        keywords: ["Blog", "Articles", "Web Development", "Technology", "Kartik Jevaji"],
+        image: "/file.svg"
+      },
+      sections: []
     }
   ]
 };
