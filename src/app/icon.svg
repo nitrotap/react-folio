@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!--
+    Favicon: the crab, reduced until it survives 16px.
+
+    The hero artwork has a wizard hat, runes, and jointed legs, none of which
+    resolve at a size where the whole mark gets about 16 device pixels. What
+    identifies a crab at this scale is: wide shell, two raised pincers, legs
+    either side, two eyes.
+
+    The pincers are drawn as discs with a wedge punched out in the background
+    colour, angled outward. An earlier version drew them as tapered shapes
+    pointing straight up and they read unmistakably as rabbit ears — the open
+    notch is the entire difference between a claw and an ear, so it has to be
+    large enough to survive downsampling.
+
+    Palette comes from the artwork, not the theme tokens: browser chrome has no
+    idea which theme is active, so the mark carries its own contrast. Gold on
+    deep indigo holds against both light and dark tab bars.
+  -->
+  <rect width="32" height="32" rx="7" fill="#1a1c2c"/>
+
+  <g fill="#ffcd75" stroke="#ffcd75" stroke-linecap="round">
+    <!-- Legs: three a side. -->
+    <g stroke-width="1.7" fill="none">
+      <path d="M10 20 L4.5 19.5"/>
+      <path d="M10 22.5 L5 23.5"/>
+      <path d="M11 25 L7.5 27.5"/>
+      <path d="M22 20 L27.5 19.5"/>
+      <path d="M22 22.5 L27 23.5"/>
+      <path d="M21 25 L24.5 27.5"/>
+    </g>
+
+    <!-- Arms -->
+    <g stroke-width="2.4" fill="none">
+      <path d="M11.5 19 L8.5 15.5"/>
+      <path d="M20.5 18.5 L23.5 14"/>
+    </g>
+
+    <!-- Shell -->
+    <ellipse cx="16" cy="22" rx="7" ry="5.2" stroke="none"/>
+
+    <!-- Pincers -->
+    <circle cx="7" cy="12" r="4.3" stroke="none"/>
+    <circle cx="25" cy="10.5" r="5" stroke="none"/>
+  </g>
+
+  <!-- Wedges punched out of the pincers, and the eyes. Same fill as the
+       ground, so they read as openings rather than as marks. -->
+  <g fill="#1a1c2c">
+    <path d="M7.6 12.6 L1.2 9.6 L4.4 4.6 Z"/>
+    <path d="M24.4 11.2 L31.4 8.2 L27.6 2.6 Z"/>
+    <circle cx="13.2" cy="20.9" r="1.45"/>
+    <circle cx="18.8" cy="20.9" r="1.45"/>
+  </g>
+</svg>
