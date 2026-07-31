@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import JsonLd from "../../../components/JsonLd";
+import { pageMetadata, collectionPageSchema, breadcrumbSchema } from "@/lib/seo";
+import { profile } from "@/data/site";
 import PageHeader from "../../../components/PageHeader";
 import PostCard from "../../../components/PostCard";
 import TopicLink from "../../../components/TopicLink";
@@ -37,10 +40,17 @@ export async function generateMetadata({
   const { tag } = await params;
   const topic = getTagBySlug(tag);
   if (!topic) return {};
-  return {
+  const posts = getPostsByTagSlug(topic.slug);
+  // Naming the posts makes the description specific to this topic rather than
+  // a template with a number swapped in. Max count is 3, so it stays short.
+  return pageMetadata({
     title: `${topic.tag} — writing`,
-    description: `Every post tagged ${topic.tag}. ${topic.count} in total.`,
-  };
+    description: `${topic.count} post${topic.count === 1 ? "" : "s"} tagged ${topic.tag}: ${posts
+      .map((p) => p.title)
+      .join("; ")}.`,
+    path: `/blog/tag/${topic.slug}`,
+    keywords: [topic.tag, profile.name, "writing"],
+  });
 }
 
 export default async function TagPage({
@@ -57,6 +67,21 @@ export default async function TagPage({
 
   return (
     <div className="w-full">
+      <JsonLd
+        data={[
+          collectionPageSchema({
+            name: `Posts tagged ${topic.tag}`,
+            description: `Every post tagged ${topic.tag}.`,
+            path: `/blog/tag/${topic.slug}`,
+            items: posts.map((p) => ({ name: p.title, path: `/blog/${p.slug}` })),
+          }),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Writing", path: "/blog" },
+            { name: topic.tag, path: `/blog/tag/${topic.slug}` },
+          ]),
+        ]}
+      />
       <PageHeader
         eyebrow="§ Topic"
         title={topic.tag}

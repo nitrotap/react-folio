@@ -445,10 +445,18 @@ footer {
    The exemption list is the fix, because it is already the mechanism for
    exactly this: elements that state their own colour opt out. `astryx-` covers
    Astryx's components; `kj-hit` covers the search result fields, which are our
-   spans, inside the header, each with a deliberate colour. */
-header :is(p, li, h1, h2, h3, h4, h5, h6, span, code, strong, em, dt, dd):not(:where([class*='astryx-'], [class*='kj-hit'])),
-main :is(p, li, h1, h2, h3, h4, h5, h6, span, code, strong, em, dt, dd):not(:where([class*='astryx-'], [class*='kj-hit'])),
-footer :is(p, li, h1, h2, h3, h4, h5, h6, span, code, strong, em, dt, dd):not(:where([class*='astryx-'], [class*='kj-hit'])) {
+   spans, inside the header, each with a deliberate colour.
+
+   `.prose-body :is(code, strong)` is the same story found on a post page. Both
+   are named in the list above, so both were taking `color: inherit` from the
+   article wrapper — which is `--muted` — and the `.prose-body code` /
+   `.prose-body strong` rules that ask for `--ink` never applied. An inline code
+   chip darkens its own background, so muted-on-darkened measured 3.94:1 on
+   Neumorphism: a real AA failure across every inline `code` in every post, and
+   invisible in review because it looks like ordinary body text. */
+header :is(p, li, h1, h2, h3, h4, h5, h6, span, code, strong, em, dt, dd):not(:where([class*='astryx-'], [class*='kj-hit'], .prose-body :is(code, strong))),
+main :is(p, li, h1, h2, h3, h4, h5, h6, span, code, strong, em, dt, dd):not(:where([class*='astryx-'], [class*='kj-hit'], .prose-body :is(code, strong))),
+footer :is(p, li, h1, h2, h3, h4, h5, h6, span, code, strong, em, dt, dd):not(:where([class*='astryx-'], [class*='kj-hit'], .prose-body :is(code, strong))) {
   color: inherit;
   /* Same reasoning as the colour: Astryx sets font-family on bare `p` and `li`,
      and an element-level rule beats the family inherited from the landmark. */

@@ -117,7 +117,7 @@ export default async function ProjectPage({
           <div className="flex flex-wrap gap-2">
             {stack.map(({ entry, topic }) =>
               topic ? (
-                <TopicLink key={entry} tag={topic.tag} variant="blue" />
+                <TopicLink key={entry} tag={topic.tag} text={entry} variant="blue" />
               ) : (
                 <Badge key={entry} variant="blue" label={entry} />
               ),

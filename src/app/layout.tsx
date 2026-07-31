@@ -4,7 +4,8 @@ import { Providers } from "./providers";
 import SiteNav from "./components/SiteNav";
 import SiteFooter from "./components/SiteFooter";
 import ThemeScript from "./components/ThemeScript";
-import { profile } from "@/data/site";
+import { profile, pillars, skillGroups } from "@/data/site";
+import { OG_IMAGE } from "@/lib/seo";
 
 const SITE_URL = "https://www.nitrotap.dev";
 
@@ -15,26 +16,46 @@ export const metadata: Metadata = {
     template: `%s | ${profile.name}`,
   },
   description: profile.lede,
+  // Derived, not restated: the hardcoded list here still said "Full Stack AI
+  // Engineer" and "neurosymbolic AI" long after the positioning changed.
   keywords: [
-    "Kartik Jevaji",
-    "Full Stack AI Engineer",
-    "neurosymbolic AI",
-    "formal verification",
-    "Kani",
-    "Rust",
-    "ontologies",
-    "LLM evaluation",
-    "TypeDB",
-    "statistics",
+    profile.name,
+    profile.handle,
+    ...pillars.map((p) => p.name),
+    ...skillGroups.map((g) => g.name),
   ],
   authors: [{ name: profile.name, url: SITE_URL }],
   creator: profile.name,
+  publisher: profile.name,
+  applicationName: profile.name,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
+    type: "website",
+    url: SITE_URL,
     title: `${profile.name} | ${profile.role}`,
     description: profile.lede,
-    url: SITE_URL,
     siteName: profile.name,
-    type: "website",
+    locale: "en_US",
+    // Declaring `openGraph` at all suppresses the inherited opengraph-image
+    // file convention, so the image has to be named explicitly here.
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${profile.name} | ${profile.role}`,
+    description: profile.lede,
+    images: [OG_IMAGE],
+    // No X/Twitter account exists, so `creator` is deliberately absent.
   },
 };
 

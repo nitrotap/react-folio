@@ -21,14 +21,24 @@ export default function TopicLink({
   count,
   variant = "purple",
   isCurrent = false,
+  text,
 }: {
   tag: string;
   count?: number;
   variant?: "purple" | "teal" | "blue" | "neutral";
   /** The topic whose page we are already on: shown, but not a link to itself. */
   isCurrent?: boolean;
+  /**
+   * Display text, when the caller's word for the topic differs from the tag's.
+   * A project's stack says "Rust" and "TypeDB"; the tags are `rust` and
+   * `typedb`. The link resolves through the tag, but the chip keeps the
+   * spelling the page authored — rewriting a stack list into lowercase to match
+   * a slug would be the tail wagging the dog.
+   */
+  text?: string;
 }) {
-  const label = count == null ? tag : `${tag} · ${count}`;
+  const shown = text ?? tag;
+  const label = count == null ? shown : `${shown} · ${count}`;
 
   if (isCurrent) {
     return (
@@ -43,7 +53,7 @@ export default function TopicLink({
       href={`/blog/tag/${tagSlug(tag)}`}
       className="kj-topic"
       aria-label={
-        count == null ? undefined : `${tag} — ${count} post${count === 1 ? "" : "s"}`
+        count == null ? undefined : `${shown} — ${count} post${count === 1 ? "" : "s"}`
       }
     >
       <Badge variant={variant} label={label} />

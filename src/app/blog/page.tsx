@@ -1,15 +1,21 @@
-import type { Metadata } from "next";
 import PageHeader from "../components/PageHeader";
+import JsonLd from "../components/JsonLd";
+import { pageMetadata, blogSchema, breadcrumbSchema } from "@/lib/seo";
+import { profile } from "@/data/site";
 import PostCard from "../components/PostCard";
 import TopicLink from "../components/TopicLink";
 import { Tag } from "../components/Icons";
 import { getAllPosts, getAllTagSummaries } from "@/lib/blog";
 
-export const metadata: Metadata = {
+const BLOG_DESCRIPTION =
+  "Notes on formal verification, ontology-driven code generation, model fine-tuning, and evaluation.";
+
+export const metadata = pageMetadata({
   title: "Writing",
-  description:
-    "Notes on formal verification, ontology-driven code generation, model fine-tuning, and evaluation.",
-};
+  description: BLOG_DESCRIPTION,
+  path: "/blog",
+  keywords: [profile.name, "writing", ...getAllTagSummaries().map((t) => t.tag)],
+});
 
 export default function BlogIndex() {
   const posts = getAllPosts();
@@ -17,6 +23,15 @@ export default function BlogIndex() {
 
   return (
     <div className="w-full">
+      <JsonLd
+        data={[
+          blogSchema({ path: "/blog", name: "Writing", description: BLOG_DESCRIPTION, posts }),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Writing", path: "/blog" },
+          ]),
+        ]}
+      />
       <PageHeader
         eyebrow="§ Writing"
         title="Writing"
