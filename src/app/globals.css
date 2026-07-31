@@ -23,9 +23,14 @@
    decorative use. Ratios are noted inline and were computed, not estimated.
    =========================================================================== */
 
+/* `[data-kj-preview]` mirrors each theme block onto a scoped element so the
+   designs page can show all four side by side while the page itself is in one
+   of them. A declaration on the element always beats a value inherited from
+   :root, so the lower specificity does not matter here. */
 @layer astryx-theme {
   :root,
-  :root[data-kj-theme='neumorphism'] {
+  :root[data-kj-theme='neumorphism'],
+  [data-kj-preview='neumorphism'] {
     /* --- Neumorphism: soft extruded dual-shadow --------------------------- */
     --ground: #e0e5ec;
     --ink: #3a4252; /* 7.9:1 — AAA */
@@ -65,7 +70,8 @@
     --kj-icon-render: geometricPrecision;
   }
 
-  :root[data-kj-theme='blueprint'] {
+  :root[data-kj-theme='blueprint'],
+  [data-kj-preview='blueprint'] {
     /* --- Blueprint: cyan-on-navy drafting --------------------------------- */
     --ground: #0b2545;
     --ink: #dce8ff; /* 12.5:1 */
@@ -105,7 +111,8 @@
     --kj-icon-render: geometricPrecision;
   }
 
-  :root[data-kj-theme='swiss'] {
+  :root[data-kj-theme='swiss'],
+  [data-kj-preview='swiss'] {
     /* --- Swiss / International: strict grid, red accent ------------------- */
     --ground: #f4f4f2;
     --ink: #111111; /* 17.1:1 */
@@ -142,7 +149,8 @@
     --kj-icon-render: geometricPrecision;
   }
 
-  :root[data-kj-theme='pixel'] {
+  :root[data-kj-theme='pixel'],
+  [data-kj-preview='pixel'] {
     /* --- 8-bit: chunky pixels, limited palette ---------------------------- */
     --ground: #1a1c2c;
     --ink: #f0f0f0; /* 14.9:1 */
@@ -1046,5 +1054,28 @@ code, pre, kbd, samp {
 @media (prefers-reduced-motion: no-preference) {
   .kj-crab:hover {
     transform: translateY(-2px) rotate(-0.6deg);
+  }
+}
+
+
+@layer components {
+  /* A preview pane is a whole miniature page: it owns its ground, its type,
+     and its own text colour, because the landmark rules that normally supply
+     those stop at header/main/footer. */
+  [data-kj-preview] {
+    background-color: var(--ground);
+    background-image: var(--page-pattern);
+    color: var(--ink);
+    font-family: var(--font-body);
+  }
+  [data-kj-preview] :is(p, li, span, h1, h2, h3, h4, strong, em, code) {
+    color: inherit;
+    font-family: inherit;
+  }
+  [data-kj-preview] :is(h1, h2, h3, h4) {
+    font-family: var(--font-heading);
+  }
+  [data-kj-preview] code {
+    font-family: var(--font-code);
   }
 }

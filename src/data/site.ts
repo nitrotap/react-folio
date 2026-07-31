@@ -656,6 +656,7 @@ export const navLinks: Link[] = [
   { label: "Projects", href: "/projects" },
   { label: "Skills", href: "/skills" },
   { label: "Writing", href: "/blog" },
+  { label: "Designs", href: "/designs" },
   { label: "Experience", href: "/experience" },
   { label: "About", href: "/about" },
 ];

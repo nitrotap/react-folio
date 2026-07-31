@@ -39,6 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: absoluteUrl("/blog"), lastModified: newestPost, changeFrequency: "weekly", priority: 0.9 },
     { url: absoluteUrl("/about"), lastModified: buildTime, changeFrequency: "monthly", priority: 0.8 },
     { url: absoluteUrl("/skills"), lastModified: buildTime, changeFrequency: "monthly", priority: 0.7 },
+    { url: absoluteUrl("/designs"), lastModified: buildTime, changeFrequency: "monthly", priority: 0.7 },
     { url: absoluteUrl("/experience"), lastModified: buildTime, changeFrequency: "yearly", priority: 0.6 },
     { url: absoluteUrl("/education"), lastModified: buildTime, changeFrequency: "yearly", priority: 0.5 },
     { url: absoluteUrl("/contact"), lastModified: buildTime, changeFrequency: "yearly", priority: 0.5 },
