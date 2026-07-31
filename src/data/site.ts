@@ -155,7 +155,7 @@ export const verification = {
     "Harnesses live in `#[cfg(kani)] mod verification` blocks co-located with the code they constrain, so they are invisible to normal builds and cost nothing at runtime.",
     "Miri runs as the dynamic undefined-behaviour backstop for what Kani cannot reach.",
     "Numerics are separately validated against `scipy.stats`, `scikit-learn`, `ruptures`, and `mlxtend` via committed golden fixtures, to documented tolerances between 1e-8 and 1e-12.",
-    "Sampling is deterministic by construction: a hand-written SplitMix64 generator produces a byte-identical *stream* on every target. A long floating-point reduction over that stream may still differ in the last few ULPs, because summation order is a codegen decision — so the stream is pinned exactly and reductions are checked to a tolerance.",
+    "Sampling is deterministic, within a boundary worth stating precisely: a hand-written SplitMix64 gives a byte-identical uniform stream on every target, but anything downstream of a transcendental is not portable. Box–Muller calls `ln`, `sin`, and `cos`, which Rust delegates to the platform math library — sub-ULP accurate, not correctly rounded — and roughly 16% of normal draws differ by 1–2 ULP between architectures. So the uniform stream is pinned bit-for-bit and everything past it is checked to a tolerance derived from the standard error.",
     "The full suite takes upwards of twenty minutes, so it runs as a release gate rather than on every push.",
   ],
   proofs: [

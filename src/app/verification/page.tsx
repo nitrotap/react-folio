@@ -1,38 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CodeBlock } from "@astryxdesign/core/CodeBlock";
 import { Divider } from "@astryxdesign/core/Divider";
-import { Badge } from "@astryxdesign/core/Badge";
 import PageHeader from "../components/PageHeader";
 import ProofExplorer from "../components/ProofExplorer";
+import HarnessBrowser from "../components/HarnessBrowser";
 import { BoundedSpace } from "../components/Glyphs";
 import { verification, pillars } from "@/data/site";
-
-/**
- * Representative of the harness shape, not a verbatim quote from the source —
- * the crate is public, so an invented-but-plausible snippet presented as real
- * would be checkable and wrong. This shows the pattern the suite uses.
- */
-const HARNESS = `#[cfg(kani)]
-mod verification {
-    use super::*;
-
-    #[kani::proof]
-    fn resampling_permutation_is_bijection() {
-        let n: usize = kani::any();
-        kani::assume(n > 0 && n <= 4);
-
-        let idx = permutation_indices(n, &mut seeded_rng());
-
-        // Every position is hit exactly once.
-        let mut seen = [false; 4];
-        for &i in idx.iter() {
-            assert!(i < n);
-            assert!(!seen[i]);
-            seen[i] = true;
-        }
-    }
-}`;
+import { harnesses } from "@/data/harnesses";
 
 export const metadata: Metadata = {
   title: "Verification",
@@ -113,24 +87,17 @@ export default function VerificationPage() {
           <ProofExplorer proofs={verification.proofs} />
         </section>
 
-        {/* What one looks like */}
+        {/* Real harnesses */}
         <section className="mb-14">
           <div className="flex flex-wrap items-center gap-3 mb-5">
             <h2 className="text-2xl font-bold">What a harness looks like</h2>
-            <Badge variant="neutral" label="representative" />
           </div>
-          <p className="text-sm mb-6 max-w-2xl" style={{ color: "var(--muted)" }}>
-            The bound is the honest part. Four elements is a small space — but it is{" "}
-            <em>every</em> arrangement of four, which is a different kind of statement from a
-            thousand random draws of a hundred.
+          <p className="text-sm mb-7 max-w-2xl" style={{ color: "var(--muted)" }}>
+            Quoted verbatim, doc comments included — that is where the reasoning for each bound
+            lives, and it is the part worth reading. Every one of these carves through to the
+            published crate, so it can be checked rather than taken on trust.
           </p>
-          <CodeBlock
-            code={HARNESS}
-            language="rust"
-            title="resampling/verification.rs"
-            hasLineNumbers
-            maxHeight={420}
-          />
+          <HarnessBrowser harnesses={harnesses} proofs={verification.proofs} />
         </section>
 
         <Divider variant="subtle" label="in practice" />
