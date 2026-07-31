@@ -335,6 +335,15 @@
     background: color-mix(in oklab, var(--ink) 8%, transparent);
     padding: 0.15em 0.4em;
     border-radius: var(--kj-radius-sm);
+    /* Ink, not the inherited `--muted`. An inline code chip darkens its own
+       ground by 8% of the ink, and `--muted` is chosen to clear 4.5:1 against
+       the *undarkened* ground — on Neumorphism that left every inline `code` in
+       a post at 3.94:1 (#5a6478 on rgb(206,211,217)), under AA. Ink is the token
+       with headroom to spare against a tinted ground, and inline code reading a
+       shade firmer than the prose around it is right anyway: it is a term, not
+       an aside. Shiki's own spans inside a <pre> still set their own colour and
+       are unaffected. */
+    color: var(--ink);
   }
   .prose-body pre {
     font-family: var(--font-code);

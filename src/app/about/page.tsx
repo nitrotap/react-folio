@@ -75,7 +75,7 @@ export default function AboutPage() {
         </section>
 
         <section className="mb-14">
-          <h2 className="text-2xl font-bold mb-8">Three things I work on</h2>
+          <h2 className="text-2xl font-bold mb-8">Things I work on</h2>
           <div className="flex flex-col gap-5">
             {pillars.map((p) => (
               <article key={p.slug} className="surface p-7">
