@@ -6,7 +6,11 @@ import { fetchGithubProjects } from "@/data/fetchGithubProjects";
 import type { Project } from "@/data/types";
 
 export async function generateStaticParams() {
-  return siteData.pages.map((page) => ({ slug: page.slug }));
+  // "home" is served by the root route; emitting it here too would publish the
+  // same content at both / and /home.
+  return siteData.pages
+    .filter((page) => page.slug !== "home")
+    .map((page) => ({ slug: page.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
