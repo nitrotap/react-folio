@@ -1,3 +1,6 @@
-# https://www.robotstxt.org/robotstxt.html
-User-agent: *
-Disallow:
+User-Agent: *
+Allow: /
+Disallow: /_next/
+
+Host: https://www.nitrotap.dev
+Sitemap: https://www.nitrotap.dev/sitemap.xml
