@@ -1,4 +1,4 @@
-/* Layer cascade: Tailwind base → Astryx components → our theme → utilities.
+/* Layer cascade: Tailwind base → Astryx components → our themes → utilities.
    Order matters; Astryx resolves its tokens through @layer astryx-theme. */
 @layer reset, theme, base, astryx-base, astryx-theme, components, utilities;
 
@@ -10,113 +10,374 @@
 @import '@astryxdesign/core/tailwind-theme.css';
 @import 'tailwindcss/utilities.css' layer(utilities);
 
-/* ---------------------------------------------------------------------------
-   Neumorphism theme — Astryx token overrides.
-   Palette from the Design Style Library "Neumorphism" entry, with the muted
-   and accent tones darkened to clear WCAG AA (4.5:1) against the ground.
-   The original #8a94a6 muted was 2.4:1 and #6a7bff accent 2.8:1; both failed.
-   --------------------------------------------------------------------------- */
+/* ===========================================================================
+   THEMES
+
+   Each theme overrides Astryx design tokens under a [data-kj-theme] selector —
+   the customization path Astryx documents, so no component is ever forked.
+   A theme changes surface treatment, radius, type, and pattern, not layout.
+
+   Every foreground/ground pair below is measured against WCAG AA (4.5:1).
+   Where the source palette in the Design Style Library failed, the value is
+   darkened or lightened until it passes and the original is demoted to
+   decorative use. Ratios are noted inline and were computed, not estimated.
+   =========================================================================== */
+
 @layer astryx-theme {
-  :root {
-    /* Ground and its two shadow companions define the whole extrusion effect. */
-    --nm-ground: #e0e5ec;
-    --nm-shadow-dark: #bec3c9;
-    --nm-shadow-light: #ffffff;
+  :root,
+  :root[data-kj-theme='neumorphism'] {
+    /* --- Neumorphism: soft extruded dual-shadow --------------------------- */
+    --ground: #e0e5ec;
+    --ink: #3a4252; /* 7.9:1 — AAA */
+    --muted: #5a6478; /* 4.7:1 — AA. Library value #8a94a6 was 2.4:1 */
+    --accent: #4553d6; /* 4.8:1 — AA. Library value #6a7bff was 2.8:1 */
+    --accent-glow: #6a7bff; /* decorative only — never text */
 
-    --nm-ink: #3a4252;         /* 7.9:1 on ground — AAA */
-    --nm-muted: #5a6478;       /* 4.7:1 on ground — AA  */
-    --nm-accent: #4553d6;      /* 4.8:1 on ground — AA, use for text and links */
-    --nm-accent-glow: #6a7bff; /* decorative only: glows, rings, never text */
+    --shade-dark: #bec3c9;
+    --shade-light: #ffffff;
 
-    /* Astryx surface tokens all resolve to the single ground colour — the
-       depth cue is the shadow pair, not a colour change. */
-    --color-background-body: var(--nm-ground);
-    --color-background-surface: var(--nm-ground);
-    --color-background-card: var(--nm-ground);
+    --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --font-heading: var(--font-body);
+    --font-code: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, monospace;
 
-    --color-text-primary: var(--nm-ink);
-    --color-text-secondary: var(--nm-muted);
+    --kj-radius-sm: 8px;
+    --kj-radius-md: 14px;
+    --kj-radius-lg: 22px;
 
-    /* Borders stay nearly invisible; extrusion carries the edge instead. */
-    --color-border: #cfd5de;
-    --color-border-emphasized: #b3bac6;
+    --border-width: 0px;
 
-    --radius-inner: 8px;
-    --radius-element: 14px;
-    --radius-container: 22px;
-
-    /* Astryx elevation tokens remapped to the dual-shadow extrusion. */
-    --shadow-low: 4px 4px 8px var(--nm-shadow-dark), -4px -4px 8px var(--nm-shadow-light);
-    --shadow-med: 9px 9px 18px var(--nm-shadow-dark), -9px -9px 18px var(--nm-shadow-light);
-    --shadow-high: 14px 14px 28px var(--nm-shadow-dark), -14px -14px 28px var(--nm-shadow-light);
+    --surface-raised: 9px 9px 18px var(--shade-dark), -9px -9px 18px var(--shade-light);
+    --surface-inset: inset 6px 6px 12px var(--shade-dark), inset -6px -6px 12px var(--shade-light);
+    --surface-pressed: inset 4px 4px 9px var(--shade-dark), inset -4px -4px 9px var(--shade-light);
+    /* Controls are ~28px tall; the card extrusion above swamps them. */
+    --surface-raised-sm: 3px 3px 6px var(--shade-dark), -3px -3px 6px var(--shade-light);
+    --surface-pressed-sm: inset 2px 2px 4px var(--shade-dark), inset -2px -2px 4px var(--shade-light);
+    --page-pattern: none;
   }
 
-  /* Dark neumorphism: same construction, inverted ground. Contrast re-checked
-     against #2e3440 rather than reused from the light theme. */
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --nm-ground: #2e3440;
-      --nm-shadow-dark: #252a34;
-      --nm-shadow-light: #373e4c;
+  :root[data-kj-theme='blueprint'] {
+    /* --- Blueprint: cyan-on-navy drafting --------------------------------- */
+    --ground: #0b2545;
+    --ink: #dce8ff; /* 12.5:1 */
+    --muted: #8fb4de; /* 7.1:1 */
+    --accent: #6ad0ff; /* 8.9:1 */
+    --accent-glow: #6ad0ff;
 
-      --nm-ink: #e6eaf2;        /* 11.4:1 on ground */
-      --nm-muted: #a8b2c4;      /*  6.1:1 on ground */
-      --nm-accent: #93a0ff;     /*  5.4:1 on ground */
-      --nm-accent-glow: #6a7bff;
+    --shade-dark: #071a33;
+    --shade-light: #16365e;
 
-      --color-border: #3a4250;
-      --color-border-emphasized: #4a5464;
-    }
+    --font-body: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, monospace;
+    --font-heading: var(--font-body);
+    --font-code: var(--font-body);
+
+    --kj-radius-sm: 2px;
+    --kj-radius-md: 3px;
+    --kj-radius-lg: 4px;
+
+    --border-width: 1px;
+
+    --surface-raised: 0 0 0 1px rgb(106 208 255 / 0.28);
+    --surface-inset: inset 0 0 0 1px rgb(106 208 255 / 0.2);
+    --surface-pressed: inset 0 0 0 1px rgb(106 208 255 / 0.5);
+    --surface-raised-sm: 0 0 0 1px rgb(106 208 255 / 0.28);
+    --surface-pressed-sm: inset 0 0 0 1px rgb(106 208 255 / 0.6);
+
+    /* Drafting grid, drawn from the accent at low alpha. */
+    --page-pattern:
+      repeating-linear-gradient(0deg, rgb(106 208 255 / 0.09) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(90deg, rgb(106 208 255 / 0.09) 0 1px, transparent 1px 28px);
+  }
+
+  :root[data-kj-theme='swiss'] {
+    /* --- Swiss / International: strict grid, red accent ------------------- */
+    --ground: #f4f4f2;
+    --ink: #111111; /* 17.1:1 */
+    --muted: #555555; /* 6.8:1 */
+    --accent: #d10510; /* 5.1:1 — AA. Library value #e30613 was 4.47:1 */
+    --accent-glow: #e30613;
+
+    --shade-dark: #d8d8d4;
+    --shade-light: #ffffff;
+
+    --font-body: 'Helvetica Neue', Helvetica, Arial, Roboto, sans-serif;
+    --font-heading: var(--font-body);
+    --font-code: ui-monospace, 'SF Mono', Menlo, monospace;
+
+    /* Swiss is uncompromisingly square. */
+    --kj-radius-sm: 0px;
+    --kj-radius-md: 0px;
+    --kj-radius-lg: 0px;
+
+    --border-width: 1px;
+
+    --surface-raised: 0 0 0 1px #111111;
+    --surface-inset: inset 0 0 0 1px #111111;
+    --surface-pressed: inset 0 0 0 2px #111111;
+    --surface-raised-sm: 0 0 0 1px #111111;
+    --surface-pressed-sm: inset 0 0 0 2px #111111;
+    --page-pattern: none;
+  }
+
+  :root[data-kj-theme='pixel'] {
+    /* --- 8-bit: chunky pixels, limited palette ---------------------------- */
+    --ground: #1a1c2c;
+    --ink: #f0f0f0; /* 14.9:1 */
+    --muted: #8b8fa8; /* 5.3:1 */
+    --accent: #ffcd75; /* 11.5:1 */
+    --accent-glow: #ffcd75;
+
+    --shade-dark: #0f1119;
+    --shade-light: #2a2d44;
+
+    --font-body: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, monospace;
+    --font-heading: var(--font-body);
+    --font-code: var(--font-body);
+
+    --kj-radius-sm: 0px;
+    --kj-radius-md: 0px;
+    --kj-radius-lg: 0px;
+
+    --border-width: 2px;
+
+    /* Hard offset shadows with zero blur — the defining 8-bit move. */
+    --surface-raised: 4px 4px 0 0 var(--shade-dark), 0 0 0 2px #3a3f5c;
+    --surface-inset: inset 3px 3px 0 0 var(--shade-dark);
+    --surface-pressed: 2px 2px 0 0 var(--shade-dark), 0 0 0 2px #3a3f5c;
+    --surface-raised-sm: 2px 2px 0 0 var(--shade-dark), 0 0 0 2px #3a3f5c;
+    --surface-pressed-sm: 0 0 0 2px #3a3f5c;
+
+    --page-pattern:
+      repeating-linear-gradient(0deg, rgb(255 255 255 / 0.03) 0 1px, transparent 1px 4px),
+      repeating-linear-gradient(90deg, rgb(255 255 255 / 0.03) 0 1px, transparent 1px 4px);
+  }
+
+  /* --- Map our tokens onto Astryx's -------------------------------------- */
+  :root {
+    --color-background-body: var(--ground);
+    --color-background-surface: var(--ground);
+    --color-background-card: var(--ground);
+    --color-text-primary: var(--ink);
+    --color-text-secondary: var(--muted);
+    --color-border: color-mix(in oklab, var(--ink) 18%, transparent);
+    --color-border-emphasized: color-mix(in oklab, var(--ink) 34%, transparent);
+    --shadow-low: var(--surface-raised);
+    --shadow-med: var(--surface-raised);
+    --shadow-high: var(--surface-raised);
   }
 }
 
-/* ---------------------------------------------------------------------------
-   Extrusion utilities. Applied to surfaces only — never to text containers
-   whose contrast depends on a flat background.
-   --------------------------------------------------------------------------- */
+/* ===========================================================================
+   COMPONENTS
+   `.surface` is the single themed primitive: each theme decides what "raised"
+   means — an extrusion, a hairline rule, or a hard offset block.
+   =========================================================================== */
+
 @layer components {
-  .nm-raised {
-    background: var(--nm-ground);
-    box-shadow: var(--shadow-med);
-    border-radius: var(--radius-container);
+  .surface {
+    background: var(--ground);
+    box-shadow: var(--surface-raised);
+    border-radius: var(--kj-radius-lg);
   }
 
-  .nm-inset {
-    background: var(--nm-ground);
-    box-shadow:
-      inset 6px 6px 12px var(--nm-shadow-dark),
-      inset -6px -6px 12px var(--nm-shadow-light);
-    border-radius: var(--radius-element);
+  .surface-inset {
+    background: var(--ground);
+    box-shadow: var(--surface-inset);
+    border-radius: var(--kj-radius-md);
   }
 
-  /* Pressed state for interactive raised surfaces. */
-  .nm-raised:active {
-    box-shadow:
-      inset 4px 4px 9px var(--nm-shadow-dark),
-      inset -4px -4px 9px var(--nm-shadow-light);
+  /* Card-scale interactive surface. */
+  .surface-interactive {
+    background: var(--ground);
+    color: var(--ink);
+    box-shadow: var(--surface-raised);
+    border-radius: var(--kj-radius-lg);
+    transition: box-shadow 160ms ease, transform 160ms ease;
   }
 
-  /* Neumorphic controls are notoriously ambiguous about affordance, so focus
-     is an explicit high-contrast ring rather than another shadow. */
-  .nm-raised:focus-visible,
-  .nm-inset:focus-visible {
-    outline: 3px solid var(--nm-accent);
+  .surface-interactive:hover {
+    transform: translateY(-1px);
+  }
+
+  .surface-interactive:active {
+    box-shadow: var(--surface-pressed);
+    transform: translateY(0);
+  }
+
+  /* Control-scale. A button is roughly a tenth the height of a card, so the
+     card extrusion reads as a dark smudge at this size rather than a raised
+     edge. Same construction, proportionate offsets. */
+  .control {
+    background: var(--ground);
+    color: var(--ink);
+    box-shadow: var(--surface-raised-sm);
+    border-radius: var(--kj-radius-md);
+    transition: box-shadow 160ms ease, transform 160ms ease;
+  }
+
+  .control:hover {
+    transform: translateY(-1px);
+  }
+
+  .control:active {
+    box-shadow: var(--surface-pressed-sm);
+    transform: translateY(0);
+  }
+
+  /* Every theme here has at least one low-affordance surface treatment, so
+     focus is an explicit high-contrast ring rather than another shadow. */
+  :where(a, button, [tabindex]):focus-visible {
+    outline: 3px solid var(--accent);
     outline-offset: 3px;
+    border-radius: var(--kj-radius-sm);
   }
+
+  .prose-body :where(h2, h3, h4) {
+    font-family: var(--font-heading);
+    color: var(--ink);
+    line-height: 1.25;
+  }
+  .prose-body h2 { font-size: 1.6rem; margin: 2.4rem 0 0.8rem; }
+  .prose-body h3 { font-size: 1.25rem; margin: 2rem 0 0.6rem; }
+
+  /* Astryx styles bare element selectors (`p`, `li`, …), which beat an
+     inherited colour from the wrapper. Without these explicit rules the body
+     copy renders near-black on the two dark-ground themes — unreadable, and
+     invisible in a light-theme review. Class-qualified selectors outrank the
+     element-level ones, so state colour and family here rather than relying on
+     inheritance. */
+  .prose-body p,
+  .prose-body li,
+  .prose-body td,
+  .prose-body blockquote {
+    color: var(--muted);
+    font-family: var(--font-body);
+  }
+  .prose-body strong { color: var(--ink); }
+
+  .prose-body p { margin: 0 0 1.1rem; max-width: 68ch; }
+  .prose-body ul, .prose-body ol { margin: 0 0 1.1rem 1.3rem; max-width: 68ch; }
+  .prose-body li { margin: 0.3rem 0; }
+  .prose-body a { color: var(--accent); text-underline-offset: 3px; }
+  .prose-body code {
+    font-family: var(--font-code);
+    font-size: 0.9em;
+    background: color-mix(in oklab, var(--ink) 8%, transparent);
+    padding: 0.15em 0.4em;
+    border-radius: var(--kj-radius-sm);
+  }
+  .prose-body pre {
+    font-family: var(--font-code);
+    overflow-x: auto;
+    padding: 1.1rem 1.3rem;
+    border-radius: var(--kj-radius-md);
+    box-shadow: var(--surface-inset);
+    margin: 0 0 1.4rem;
+    font-size: 0.86rem;
+    line-height: 1.6;
+  }
+  .prose-body pre code { background: none; padding: 0; }
+
+  /* Shiki emits both palettes as custom properties (defaultColor: false).
+     Two of our themes sit on light grounds and two on dark, and that is not a
+     prefers-color-scheme decision — so select the palette per theme. Only the
+     token colour is taken; the block's background stays the themed surface. */
+  [data-kj-theme='neumorphism'] .shiki,
+  [data-kj-theme='neumorphism'] .shiki span,
+  [data-kj-theme='swiss'] .shiki,
+  [data-kj-theme='swiss'] .shiki span {
+    color: var(--shiki-light);
+    background-color: transparent;
+  }
+  [data-kj-theme='blueprint'] .shiki,
+  [data-kj-theme='blueprint'] .shiki span,
+  [data-kj-theme='pixel'] .shiki,
+  [data-kj-theme='pixel'] .shiki span {
+    color: var(--shiki-dark);
+    background-color: transparent;
+  }
+  .prose-body blockquote {
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+    margin: 0 0 1.2rem;
+    color: var(--muted);
+  }
+  .prose-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 1.4rem;
+    font-size: 0.92rem;
+  }
+  .prose-body th, .prose-body td {
+    text-align: left;
+    padding: 0.5rem 0.7rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .prose-body th { color: var(--ink); font-weight: 600; }
+}
+
+/* ===========================================================================
+   BASE
+   =========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--ground);
+  background-image: var(--page-pattern);
+  color: var(--ink);
+  font-family: var(--font-body);
+  min-height: 100vh;
+}
+
+/* Astryx's <Theme> renders a StyleX wrapper between <body> and our markup, and
+   that wrapper sets its own font-family — so a rule on <body> alone never
+   reaches the page. These three landmarks live inside the wrapper and are ours,
+   so setting the family here puts the themed font back in charge of the whole
+   subtree. Same reason our radius and shadow tokens are namespaced `--kj-*`:
+   the wrapper re-declares Astryx's own token names for everything below it. */
+header,
+main,
+footer {
+  font-family: var(--font-body);
+  /* Astryx also sets a near-black default text colour below this point. On the
+     two dark-ground themes that renders at ~1.1:1 — invisible. Anything without
+     an explicit colour must inherit the themed ink, not Astryx's. */
+  color: var(--ink);
+}
+
+/* Astryx also colours bare `p`, `li`, and friends, and an element-level rule
+   beats a colour inherited from the landmark above. These descendant selectors
+   outrank it (0,0,2 vs 0,0,1) and hand inheritance back, so text picks up the
+   themed ink. Anything that wants a different colour sets it explicitly — via
+   an inline style or a class-qualified rule, both of which outrank this. */
+header :is(p, li, h1, h2, h3, h4, h5, h6, span, code, strong, em, dt, dd),
+main :is(p, li, h1, h2, h3, h4, h5, h6, span, code, strong, em, dt, dd),
+footer :is(p, li, h1, h2, h3, h4, h5, h6, span, code, strong, em, dt, dd) {
+  color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--ink);
+}
+
+code, pre, kbd, samp {
+  font-family: var(--font-code);
+}
+
+/* Wide content must scroll inside its own container, never the page body. */
+.scroll-x {
+  overflow-x: auto;
+  max-width: 100%;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-}
-
-body {
-  background: var(--nm-ground);
-  color: var(--color-text-primary);
-  min-height: 100vh;
 }
