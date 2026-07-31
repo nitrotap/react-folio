@@ -1,15 +1,43 @@
-import type { Metadata } from "next";
 import PageHeader from "../components/PageHeader";
+import JsonLd from "../components/JsonLd";
 import { profile } from "@/data/site";
+import { pageMetadata, breadcrumbSchema, PERSON_ID, SITE_URL } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Contact",
-  description: `Get in touch with ${profile.name} — ${profile.role} based in ${profile.location}.`,
-};
+  description: `Ways to reach ${profile.name} — ${profile.links
+    .map((l) => l.label)
+    .join(", ")}. Based in ${profile.location}.`,
+  path: "/contact",
+  keywords: [
+    profile.name,
+    profile.handle,
+    "contact",
+    profile.location,
+    ...profile.links.map((l) => l.label),
+  ],
+});
 
 export default function ContactPage() {
   return (
     <div className="w-full">
+      <JsonLd
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "@id": `${SITE_URL}/contact#contactpage`,
+            url: `${SITE_URL}/contact`,
+            name: `Contact ${profile.name}`,
+            inLanguage: "en",
+            mainEntity: { "@id": PERSON_ID },
+          },
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Contact", path: "/contact" },
+          ]),
+        ]}
+      />
       <PageHeader
         eyebrow="§ Contact"
         title="Get in touch"

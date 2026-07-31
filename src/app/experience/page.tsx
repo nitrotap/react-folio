@@ -1,16 +1,29 @@
-import type { Metadata } from "next";
 import PageHeader from "../components/PageHeader";
-import { experience } from "@/data/site";
+import JsonLd from "../components/JsonLd";
+import { experience, profile } from "@/data/site";
+import { pageMetadata, breadcrumbSchema } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Experience",
   description:
     "Software engineering at Phase Change Software, instructional work at edX, web development at ATHENA Consulting, and healthcare software implementation at Epic.",
-};
+  path: "/experience",
+  keywords: [
+    profile.name,
+    ...experience.map((r) => r.company),
+    ...experience.map((r) => r.title),
+  ],
+});
 
 export default function ExperiencePage() {
   return (
     <div className="w-full">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Experience", path: "/experience" },
+        ])}
+      />
       <PageHeader
         eyebrow="§ Experience"
         title="Where I've worked"

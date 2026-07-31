@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { External } from "./Icons";
 import { profile, navLinks } from "@/data/site";
 
 /**
@@ -38,17 +39,23 @@ export default function SiteFooter() {
             </ul>
           </nav>
 
+          {/* Every link in this column leaves the site, and the column beside
+              it is internal navigation — so the arrow is the one thing that
+              tells the two apart at a glance. It is still only a reinforcement:
+              the labels (GitHub, LinkedIn, Email) already say so. */}
           <ul className="flex flex-col gap-2 text-sm">
             {profile.links.map((l) => (
               <li key={l.href}>
                 <a
                   href={l.href}
+                  className="inline-flex items-center gap-1.5"
                   style={{ color: "var(--muted)" }}
                   {...(l.href.startsWith("http")
                     ? { target: "_blank", rel: "noreferrer noopener" }
                     : {})}
                 >
                   {l.label}
+                  <External size="0.85em" className="kj-icon-inline" />
                 </a>
               </li>
             ))}

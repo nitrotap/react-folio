@@ -4,6 +4,7 @@ import { useState } from "react";
 import { TabList, Tab } from "@astryxdesign/core/TabList";
 import { CodeBlock } from "@astryxdesign/core/CodeBlock";
 import { Badge } from "@astryxdesign/core/Badge";
+import { Bound } from "./Icons";
 import type { Harness } from "@/data/harnesses";
 import type { Proof } from "@/data/site";
 
@@ -49,7 +50,12 @@ export default function HarnessBrowser({
         >
           {harness.name}
         </code>
-        {proof?.bound && <Badge variant="purple" label={proof.bound} />}
+        {/* The bound is the one thing on this row that qualifies the claim, so
+            it gets the only glyph — a bounded region inside a larger space.
+            The badge label still states the bound in words. */}
+        {proof?.bound && (
+          <Badge variant="purple" label={proof.bound} icon={<Bound size={13} />} />
+        )}
         <Badge variant="teal" label="verbatim" />
       </div>
 

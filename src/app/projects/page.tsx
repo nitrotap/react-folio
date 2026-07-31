@@ -1,18 +1,43 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Badge } from "@astryxdesign/core/Badge";
 import PageHeader from "../components/PageHeader";
+import JsonLd from "../components/JsonLd";
+import { Lock } from "../components/Icons";
 import { projects } from "@/data/site";
+import { pageMetadata, breadcrumbSchema, collectionPageSchema } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Projects",
   description:
     "Selected work — verified numerics in Rust, ontology-driven code generation, model fine-tuning and evaluation, and production platform engineering.",
-};
+  path: "/projects",
+  keywords: [
+    ...projects.map((p) => p.name),
+    ...[...new Set(projects.flatMap((p) => p.stack))],
+  ],
+});
 
 export default function ProjectsPage() {
   return (
     <div className="w-full">
+      <JsonLd
+        data={[
+          collectionPageSchema({
+            name: "Projects",
+            description:
+              "Selected work — verified numerics in Rust, ontology-driven code generation, model fine-tuning and evaluation, and production platform engineering.",
+            path: "/projects",
+            items: projects.map((p) => ({
+              name: p.name,
+              path: `/projects/${p.slug}`,
+            })),
+          }),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Projects", path: "/projects" },
+          ]),
+        ]}
+      />
       <PageHeader
         eyebrow="§ Selected work"
         title="Projects"
@@ -30,7 +55,12 @@ export default function ProjectsPage() {
                     <span className="text-xs" style={{ color: "var(--muted)", fontFamily: "var(--font-code)" }}>
                       {p.period}
                     </span>
-                    {p.status === "private" && <Badge variant="neutral" label="private" />}
+                    {/* Only the private ones are badged — a "public" badge on
+                        every other row would be noise, and the padlock sits
+                        beside the word rather than replacing it. */}
+                    {p.status === "private" && (
+                      <Badge variant="neutral" label="private" icon={<Lock size={13} />} />
+                    )}
                   </span>
                 </div>
                 <p className="text-sm mb-3" style={{ color: "var(--accent)" }}>

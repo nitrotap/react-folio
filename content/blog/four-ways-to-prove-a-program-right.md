@@ -10,7 +10,7 @@ My permutation harness proves that a resampler is a bijection for `n` up to six.
 
 The honest answer is that it would take a different tool. Kani is a bounded model checker, and "bounded" is not a footnote — it is the entire shape of the claim. Six is not infinity. So I went and read the documentation for the three tools people reach for when six isn't enough.
 
-I've shipped work with Kani: 72 harnesses across a Rust statistics library, running as a release gate, with Miri underneath as the undefined-behaviour backstop. I have not shipped anything in Lean, Dafny, or Verus. Everything below about those three comes from their own docs and papers, and I'll flag where I'm reasoning rather than reporting.
+I've shipped work with Kani: 72 harnesses across a Rust statistics library, running as a release gate, with Miri underneath as the undefined-behaviour backstop. I have not *verified a system* in Lean, Dafny, or Verus — though I have contributed to the Verus compiler, which is a different thing and taught me something specific about how ghost code is erased. Everything below about those three comes from their own docs and papers, and I'll flag where I'm reasoning rather than reporting.
 
 ## What each one actually proves
 

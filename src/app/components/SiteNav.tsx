@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { navLinks, profile } from "@/data/site";
 import ThemeSwitcher from "./ThemeSwitcher";
+import SiteSearch from "./SiteSearch";
 
 export default function SiteNav() {
   const pathname = usePathname();
@@ -20,16 +21,6 @@ export default function SiteNav() {
         <Link href="/" className="font-semibold tracking-tight text-lg">
           {profile.name}
         </Link>
-
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          aria-controls="primary-menu"
-          className="control px-3 py-2 text-sm md:hidden"
-        >
-          {open ? "Close" : "Menu"}
-        </button>
 
         <ul className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
@@ -49,8 +40,25 @@ export default function SiteNav() {
           ))}
         </ul>
 
-        <div className="hidden lg:block">
-          <ThemeSwitcher />
+        {/* One SiteSearch for the whole page, and outside the collapsible menu
+            at every width. It registers the global ⌘K/Ctrl-K handler, so a
+            second instance for the mobile layout would mean two listeners and
+            two dialogs opening on one keypress; and search is the fastest route
+            to anything here, which burying it behind a second tap would undo. */}
+        <div className="flex items-center gap-2 md:gap-3">
+          <SiteSearch />
+          <div className="hidden lg:block">
+            <ThemeSwitcher />
+          </div>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="primary-menu"
+            className="control px-3 py-2 text-sm md:hidden"
+          >
+            {open ? "Close" : "Menu"}
+          </button>
         </div>
       </div>
 

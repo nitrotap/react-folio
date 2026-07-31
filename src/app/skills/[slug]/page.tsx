@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import PageHeader from "../../components/PageHeader";
+import JsonLd from "../../components/JsonLd";
 import { skillGroups, getSkillGroup } from "@/data/site";
+import { pageMetadata, breadcrumbSchema, authorNode, absoluteUrl, WEBSITE_ID } from "@/lib/seo";
 
 export function generateStaticParams() {
   return skillGroups.map((g) => ({ slug: g.slug }));
@@ -16,10 +18,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const group = getSkillGroup(slug);
   if (!group) return {};
-  return {
+  return pageMetadata({
     title: group.name,
     description: group.summary,
-  };
+    path: `/skills/${group.slug}`,
+    keywords: [group.name, ...group.items],
+  });
 }
 
 export default async function SkillPage({
@@ -35,6 +39,36 @@ export default async function SkillPage({
 
   return (
     <div className="w-full">
+      <JsonLd
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "ItemPage",
+            "@id": `${absoluteUrl(`/skills/${group.slug}`)}#itempage`,
+            url: absoluteUrl(`/skills/${group.slug}`),
+            name: group.name,
+            description: group.summary,
+            inLanguage: "en",
+            isPartOf: { "@id": WEBSITE_ID },
+            author: authorNode(),
+            mainEntity: {
+              "@type": "ItemList",
+              name: group.name,
+              numberOfItems: group.items.length,
+              itemListElement: group.items.map((item, i) => ({
+                "@type": "ListItem",
+                position: i + 1,
+                name: item,
+              })),
+            },
+          },
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Skills", path: "/skills" },
+            { name: group.name, path: `/skills/${group.slug}` },
+          ]),
+        ]}
+      />
       <PageHeader eyebrow="§ Capabilities" title={group.name} lede={group.summary} />
 
       <div className="max-w-4xl mx-auto pb-16">

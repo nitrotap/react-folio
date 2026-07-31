@@ -48,9 +48,16 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen flex flex-col">
         <Providers>
+          {/* This link sits outside header/main/footer, so the `color: var(--ink)`
+              rule on those three landmarks never reaches it and it inherits
+              Astryx's near-black default instead. Invisible while sr-only, but
+              the moment a keyboard user focuses it, it paints #171717 on the
+              dark grounds — 1.17:1 on Blueprint, 1.06:1 on 8-bit. Stated
+              explicitly here. */}
           <a
             href="#main"
             className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-3 focus:px-4 focus:py-2 surface"
+            style={{ color: "var(--ink)" }}
           >
             Skip to content
           </a>

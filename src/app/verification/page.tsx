@@ -1,24 +1,67 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Divider } from "@astryxdesign/core/Divider";
 import PageHeader from "../components/PageHeader";
+import JsonLd from "../components/JsonLd";
 import ProofExplorer from "../components/ProofExplorer";
 import HarnessBrowser from "../components/HarnessBrowser";
 import { BoundedSpace } from "../components/Glyphs";
+import { ArrowRight, Files, IconChip, Proof, Shield } from "../components/Icons";
 import { verification, pillars } from "@/data/site";
 import { harnesses } from "@/data/harnesses";
+import {
+  pageMetadata,
+  breadcrumbSchema,
+  authorNode,
+  SITE_URL,
+  WEBSITE_ID,
+} from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Verification",
-  description:
-    "Formal verification of numeric code with Kani — proof harnesses over index bounds, totality, and structural invariants, backed by Miri and reference-equivalence testing.",
-};
+  description: `${verification.harnessCount} Kani proof harnesses across ${verification.fileCount} files, over index bounds, totality, and structural invariants — with Miri as the undefined-behaviour backstop and scipy-referenced golden fixtures for the numerics.`,
+  path: "/verification",
+  keywords: [
+    "Kani",
+    "Miri",
+    "bounded model checking",
+    "formal verification",
+    "Rust",
+    ...pillars
+      .filter((p) => p.slug === "formal-verification")
+      .map((p) => p.name),
+    ...[...new Set(verification.proofs.map((p) => p.area))],
+  ],
+});
 
 export default function VerificationPage() {
   const pillar = pillars.find((p) => p.slug === "formal-verification")!;
 
   return (
     <div className="w-full">
+      <JsonLd
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            "@id": `${SITE_URL}/verification#article`,
+            url: `${SITE_URL}/verification`,
+            headline: "Proof, where proof is possible",
+            description: verification.summary,
+            inLanguage: "en",
+            author: authorNode(),
+            isPartOf: { "@id": WEBSITE_ID },
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": `${SITE_URL}/verification`,
+            },
+            about: [...new Set(verification.proofs.map((p) => p.area))],
+          },
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Verification", path: "/verification" },
+          ]),
+        ]}
+      />
       <PageHeader
         eyebrow="§ Formal verification"
         title="Proof, where proof is possible."
@@ -28,12 +71,17 @@ export default function VerificationPage() {
       <div className="max-w-4xl mx-auto pb-16">
         {/* Headline figures */}
         <div className="grid gap-4 sm:grid-cols-3 mb-14">
+          {/* Three figures, three different glyphs — what is being counted
+              differs in each case, so the marker carries something. */}
           {[
-            { value: String(verification.harnessCount), label: "Kani proof harnesses" },
-            { value: String(verification.fileCount), label: "Files under proof" },
-            { value: "0", label: "Unsafe blocks" },
+            { value: String(verification.harnessCount), label: "Kani proof harnesses", Icon: Proof },
+            { value: String(verification.fileCount), label: "Files under proof", Icon: Files },
+            { value: "0", label: "Unsafe blocks", Icon: Shield },
           ].map((stat) => (
             <div key={stat.label} className="surface p-6">
+              <IconChip className="mb-4">
+                <stat.Icon />
+              </IconChip>
               <p className="text-4xl font-bold" style={{ fontFamily: "var(--font-code)" }}>
                 {stat.value}
               </p>
@@ -124,7 +172,7 @@ export default function VerificationPage() {
             where they are checkable.
           </p>
           <Link href="/projects/stats-claw" className="control px-4 py-2.5 text-sm">
-            stats-claw →
+            stats-claw <ArrowRight size="1em" className="kj-arrow kj-icon-inline" />
           </Link>
         </div>
       </div>

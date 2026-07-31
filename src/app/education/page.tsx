@@ -1,16 +1,29 @@
-import type { Metadata } from "next";
 import PageHeader from "../components/PageHeader";
-import { education } from "@/data/site";
+import JsonLd from "../components/JsonLd";
+import { education, profile } from "@/data/site";
+import { pageMetadata, breadcrumbSchema } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Education",
   description:
     "MS and BS in Statistics from the University of Pittsburgh, web development certificates from Regis University and the University of Minnesota, and CompTIA A+.",
-};
+  path: "/education",
+  keywords: [
+    profile.name,
+    ...education.map((c) => c.institution),
+    ...education.map((c) => c.award),
+  ],
+});
 
 export default function EducationPage() {
   return (
     <div className="w-full">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Education", path: "/education" },
+        ])}
+      />
       <PageHeader
         eyebrow="§ Education"
         title="Education & certifications"

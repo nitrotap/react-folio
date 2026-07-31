@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Badge } from "@astryxdesign/core/Badge";
 import PageHeader from "../components/PageHeader";
-import { getAllPosts, getAllTags, formatDate } from "@/lib/blog";
+import PostCard from "../components/PostCard";
+import TopicLink from "../components/TopicLink";
+import { Tag } from "../components/Icons";
+import { getAllPosts, getAllTagSummaries } from "@/lib/blog";
 
 export const metadata: Metadata = {
   title: "Writing",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function BlogIndex() {
   const posts = getAllPosts();
-  const tags = getAllTags();
+  const tags = getAllTagSummaries();
 
   return (
     <div className="w-full">
@@ -24,11 +25,27 @@ export default function BlogIndex() {
 
       <div className="max-w-4xl mx-auto pb-16">
         {tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-10">
-            {tags.map(({ tag, count }) => (
-              <Badge key={tag} variant="teal" label={`${tag} · ${count}`} />
+          /* The badge row had no label at all. One glyph and one word fix that
+             — and because the word is there, the glyph stays decorative and
+             the row is still labelled with images off. Per-post metadata gets
+             nothing: an icon repeated on every row is decoration, not
+             information. */
+          <nav aria-label="Topics" className="flex flex-wrap items-center gap-2 mb-10">
+            <span
+              className="inline-flex items-center gap-2 text-xs uppercase mr-1"
+              style={{
+                color: "var(--muted)",
+                letterSpacing: "0.14em",
+                fontFamily: "var(--font-code)",
+              }}
+            >
+              <Tag size={14} />
+              Topics
+            </span>
+            {tags.map(({ slug, tag, count }) => (
+              <TopicLink key={slug} tag={tag} count={count} variant="teal" />
             ))}
-          </div>
+          </nav>
         )}
 
         {posts.length === 0 ? (
@@ -41,26 +58,7 @@ export default function BlogIndex() {
         ) : (
           <ul className="flex flex-col gap-5">
             {posts.map((post) => (
-              <li key={post.slug}>
-                <Link href={`/blog/${post.slug}`} className="surface-interactive p-7 block kj-reveal">
-                  <p
-                    className="text-xs mb-3"
-                    style={{ color: "var(--muted)", fontFamily: "var(--font-code)" }}
-                  >
-                    {formatDate(post.date)} · {post.readingMinutes} min read
-                    {post.draft && " · draft"}
-                  </p>
-                  <h2 className="text-xl font-semibold mb-2">{post.title}</h2>
-                  <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--muted)" }}>
-                    {post.description}
-                  </p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {post.tags.map((t) => (
-                      <Badge key={t} variant="purple" label={t} />
-                    ))}
-                  </div>
-                </Link>
-              </li>
+              <PostCard key={post.slug} post={post} />
             ))}
           </ul>
         )}

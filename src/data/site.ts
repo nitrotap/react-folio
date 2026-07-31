@@ -73,16 +73,19 @@ export interface Credential {
 export const profile = {
   name: "Kartik Jevaji",
   handle: "nitrotap",
-  role: "Full Stack AI Engineer",
-  focus: "Security-focused AI engineering",
+  role: "AI engineer, designer, implementer",
+  focus: "AI engineering, ontologies, and verified systems",
   location: "St. Paul, Minnesota",
-  thesis: "Neural generates. Symbolic verifies.",
+  thesis: "AI, Software, Design Engineer.",
+  /** Sits under the headline — the personality line, not the job title. */
+  tagline: "Ontomancer and Claw Fanatic.",
   lede:
-    "I build ontologies and automated-reasoning agents that keep language models honest, and I write the numerical machinery underneath them in Rust — with proofs where proof is possible and evaluation where it isn't.",
+    "AI engineer, designer, implementer — usually all three on the same project. I build ontologies and reasoning agents that keep language models honest, design the interfaces people actually touch, and write the proofs and evaluations that say whether any of it works.",
   summary: [
-    "Software engineer working on neurosymbolic AI systems and formally verified software. A TypeDB ontology generates the type layer, hand-written numerics sit on top, and a Kani proof suite establishes the invariants that tests can only sample.",
-    "The same shape runs through the agent work: domain and agentic ontologies for symbolic grounding, harness-level evaluations with graders for the behaviour that can't be proven, and determinism kept in the foreground.",
-    "Master's in Statistics, fifteen years of engineering in between, and a recent return to statistics by way of Rust.",
+    "Ontomancer is the word I use for the first half of the job: work out what the entities in a domain actually are, how they relate, and what has to be true — then generate as much of the system from that as possible. The second half is building it. I do both, and the design in between.",
+    "In practice that means a TypeDB ontology compiled into a Rust type layer, hand-written numerics on top of it, and a Kani proof suite establishing the invariants that tests can only sample. It also means fine-tuned small models with the evaluation harnesses to say whether they actually improved, agentic and domain ontologies for symbolic grounding, and the front-end and infrastructure to ship any of it — wireframe through to production deploy, including the four themes on this site.",
+    "The route here was not straight. A master's in statistics, then Epic from 2011 to 2013 — coordinating a hospital rollout in Omaha across five analysts, and taking the customer's first phone call when something broke. A long way around after that, and years of volunteering with the Alzheimer's Association alongside it.",
+    "The thread through the work I choose is cognition: a mental-health check-in app, a cross-platform tool implementing the NASA Task Load Index for cognitive load, retrieval over municipal code so a resident can find the permit checklist without reading the ordinance. Proof where proof is possible. Evaluation everywhere else. Neither one is optional.",
   ],
   links: [
     { label: "GitHub", href: "https://github.com/nitrotap" },
@@ -130,6 +133,47 @@ export const pillars: Pillar[] = [
       "Agentic and domain ontologies backing a symbolic verifier loop.",
       "Abstract entities become marker traits with the hierarchy preserved; concrete entities become structs carrying every inherited attribute.",
       "Knowledge representation tooling — TypeQL, LinkML, Datalog stores, and semantic web frameworks.",
+    ],
+  },
+  {
+    slug: "agents-and-harnesses",
+    name: "Agents, workflows & harnesses",
+    kicker: "The loop is the product",
+    summary:
+      "An agent is easy to demo and hard to trust. The interesting engineering is the harness around it — what it is allowed to do, what grades it, and whether the same input twice gives the same answer.",
+    detail: [
+      "Multi-agent architectures on the OpenAI Agents SDK with agentic memory and caching, against Azure OpenAI, driving an A2UI surface.",
+      "Harness-level evaluation frameworks with graders, adopted internally by QA — the thing that says whether a change to a prompt or a model actually improved anything.",
+      "A reasoning loop with a symbolic verifier, checking generated output against agentic and domain ontologies rather than against a second model's opinion.",
+      "Contract-first workflow orchestration: deterministic pipelines, generated configuration, and tests over the orchestration itself.",
+      "MCP integrations and LangChain/LangSmith tracing, with determinism treated as a product property rather than a debugging aid.",
+    ],
+  },
+  {
+    slug: "data-mining",
+    name: "Data mining",
+    kicker: "Corpora nobody has built yet",
+    summary:
+      "Fine-tuning a model for a domain means first having the data for it, and for the domains I care about that data does not exist in a convenient form. So I go and build it.",
+    detail: [
+      "A continuously running pipeline streaming merged pull requests from the public GitHub Archive, enriched with diffs, reviews, and commits, exported as JSONL training sets — deduplicated on event ID, with language-specific subsets refreshed on a schedule.",
+      "Synthetic data generation for domains with almost no public corpus: COBOL, and CMS Pricer systems.",
+      "Parsing CMS hospital price transparency filings — public data published in formats that resist being read.",
+      "Retrieval corpora built from primary sources, like a city's municipal code, so an answer can cite the ordinance instead of recalling it.",
+    ],
+  },
+  {
+    slug: "platforms",
+    name: "Platforms & full stack",
+    kicker: "Wireframe through to deploy",
+    summary:
+      "The verification work only matters if the thing ships. I build the whole path — schema, API, interface, pipeline, host — and I have run it in production for paying customers.",
+    detail: [
+      "A federated multi-tenant platform serving several brands from one codebase, with contract-first internal packages and an ontology-backed data layer.",
+      "Migrated a company site from WordPress to React/Next.js, taking Lighthouse from 60–80% to 99–100% and reaching top-10 search rankings.",
+      "CI/CD with weekly deployments and a 300+ test Playwright suite.",
+      "Infrastructure as code — Ansible across VPS hosts, nginx, systemd, containerised services, error tracking.",
+      "Cross-platform delivery: web, iOS, and Android from a shared codebase.",
     ],
   },
 ];
@@ -390,6 +434,7 @@ export const skillGroups: SkillGroup[] = [
       "Establishing that software does what it claims — by proof where the domain allows it, and by disciplined measurement everywhere else.",
     items: [
       "Kani (bounded model checking)",
+      "Verus (linear ghost types)",
       "Miri (undefined-behaviour detection)",
       "Property and invariant design",
       "Reference-equivalence testing",
@@ -461,6 +506,8 @@ export const skillGroups: SkillGroup[] = [
       "TanStack Start",
       "Angular",
       "Ionic / Capacitor",
+      "Three.js",
+      "React Three Fiber",
       "Astryx",
       "Radix UI",
       "Tailwind CSS",
