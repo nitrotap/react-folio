@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Badge } from "@astryxdesign/core/Badge";
+import { Divider } from "@astryxdesign/core/Divider";
 import PageHeader from "../../components/PageHeader";
 import { projects, getProject } from "@/data/site";
 
@@ -74,22 +76,13 @@ export default async function ProjectPage({
           </ul>
         </section>
 
-        <section className="mb-12">
+        <Divider variant="subtle" />
+
+        <section className="mb-12 mt-12">
           <h2 className="text-xl font-bold mb-5">Stack</h2>
           <div className="flex flex-wrap gap-2">
             {project.stack.map((s) => (
-              <span
-                key={s}
-                className="text-xs px-2.5 py-1.5"
-                style={{
-                  color: "var(--muted)",
-                  border: "1px solid var(--color-border)",
-                  borderRadius: "var(--kj-radius-sm)",
-                  fontFamily: "var(--font-code)",
-                }}
-              >
-                {s}
-              </span>
+              <Badge key={s} variant="blue" label={s} />
             ))}
           </div>
         </section>
@@ -106,7 +99,7 @@ export default async function ProjectPage({
                   rel="noreferrer noopener"
                   className="control px-4 py-2.5 text-sm"
                 >
-                  {l.label} ↗
+                  {l.label} <span className="kj-arrow">↗</span>
                 </a>
               ))}
             </div>

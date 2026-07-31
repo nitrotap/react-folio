@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Badge } from "@astryxdesign/core/Badge";
 import PageHeader from "../components/PageHeader";
 import { getAllPosts, getAllTags, formatDate } from "@/lib/blog";
 
@@ -25,18 +26,7 @@ export default function BlogIndex() {
         {tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-10">
             {tags.map(({ tag, count }) => (
-              <span
-                key={tag}
-                className="text-xs px-2.5 py-1.5"
-                style={{
-                  color: "var(--muted)",
-                  border: "1px solid var(--color-border)",
-                  borderRadius: "var(--kj-radius-sm)",
-                  fontFamily: "var(--font-code)",
-                }}
-              >
-                {tag} · {count}
-              </span>
+              <Badge key={tag} variant="teal" label={`${tag} · ${count}`} />
             ))}
           </div>
         )}
@@ -52,7 +42,7 @@ export default function BlogIndex() {
           <ul className="flex flex-col gap-5">
             {posts.map((post) => (
               <li key={post.slug}>
-                <Link href={`/blog/${post.slug}`} className="surface-interactive p-7 block">
+                <Link href={`/blog/${post.slug}`} className="surface-interactive p-7 block kj-reveal">
                   <p
                     className="text-xs mb-3"
                     style={{ color: "var(--muted)", fontFamily: "var(--font-code)" }}
@@ -66,9 +56,7 @@ export default function BlogIndex() {
                   </p>
                   <div className="flex flex-wrap gap-1.5">
                     {post.tags.map((t) => (
-                      <span key={t} className="text-xs" style={{ color: "var(--accent)" }}>
-                        #{t}
-                      </span>
+                      <Badge key={t} variant="purple" label={t} />
                     ))}
                   </div>
                 </Link>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Badge } from "@astryxdesign/core/Badge";
 import PageHeader from "../components/PageHeader";
 import { projects } from "@/data/site";
 
@@ -22,12 +23,14 @@ export default function ProjectsPage() {
         <ul className="flex flex-col gap-5">
           {projects.map((p) => (
             <li key={p.slug}>
-              <Link href={`/projects/${p.slug}`} className="surface-interactive p-7 block">
+              <Link href={`/projects/${p.slug}`} className="surface-interactive p-7 block kj-reveal">
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 mb-2">
                   <h2 className="text-xl font-semibold">{p.name}</h2>
-                  <span className="text-xs" style={{ color: "var(--muted)", fontFamily: "var(--font-code)" }}>
-                    {p.period}
-                    {p.status === "private" && " · private"}
+                  <span className="flex items-center gap-2">
+                    <span className="text-xs" style={{ color: "var(--muted)", fontFamily: "var(--font-code)" }}>
+                      {p.period}
+                    </span>
+                    {p.status === "private" && <Badge variant="neutral" label="private" />}
                   </span>
                 </div>
                 <p className="text-sm mb-3" style={{ color: "var(--accent)" }}>
@@ -38,18 +41,7 @@ export default function ProjectsPage() {
                 </p>
                 <div className="flex flex-wrap gap-1.5">
                   {p.stack.slice(0, 6).map((s) => (
-                    <span
-                      key={s}
-                      className="text-xs px-2 py-1"
-                      style={{
-                        color: "var(--muted)",
-                        border: "1px solid var(--color-border)",
-                        borderRadius: "var(--kj-radius-sm)",
-                        fontFamily: "var(--font-code)",
-                      }}
-                    >
-                      {s}
-                    </span>
+                    <Badge key={s} variant="blue" label={s} />
                   ))}
                 </div>
               </Link>

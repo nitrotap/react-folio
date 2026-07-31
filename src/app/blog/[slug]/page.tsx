@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Badge } from "@astryxdesign/core/Badge";
+import { Divider } from "@astryxdesign/core/Divider";
+import BlogOutline from "../../components/BlogOutline";
 import { getAllPosts, getPost, formatDate } from "@/lib/blog";
 
 export function generateStaticParams() {
@@ -61,9 +64,7 @@ export default async function BlogPost({
         {post.tags.length > 0 && (
           <div className="mt-6 flex flex-wrap gap-2">
             {post.tags.map((t) => (
-              <span key={t} className="text-xs" style={{ color: "var(--accent)" }}>
-                #{t}
-              </span>
+              <Badge key={t} variant="purple" label={t} />
             ))}
           </div>
         )}
@@ -78,11 +79,18 @@ export default async function BlogPost({
         from a CMS, an external feed, or untrusted contributors, this would need
         sanitising before render.
       */}
-      <div
-        className="prose-body max-w-3xl mx-auto pb-14"
-        style={{ color: "var(--muted)" }}
-        dangerouslySetInnerHTML={{ __html: post.html }}
-      />
+      <div className="max-w-3xl xl:max-w-6xl mx-auto flex gap-12 justify-center pb-14">
+        <div
+          className="prose-body min-w-0 max-w-3xl"
+          style={{ color: "var(--muted)" }}
+          dangerouslySetInnerHTML={{ __html: post.html }}
+        />
+        <BlogOutline items={post.outline} />
+      </div>
+
+      <div className="max-w-3xl mx-auto">
+        <Divider variant="subtle" />
+      </div>
 
       <nav
         aria-label="Post navigation"

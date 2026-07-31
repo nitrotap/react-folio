@@ -24,6 +24,14 @@ export interface Proof {
   name: string;
   establishes: string;
   area: string;
+  /**
+   * The bounded space the property is checked over. CBMC is a *bounded* model
+   * checker: scalar domains are exhaustive, but collection-size-parameterised
+   * properties are proven at small fixed sizes. Stating the bound is the
+   * difference between an honest claim and an overclaim, so it is shown rather
+   * than hidden. Omitted where the bound has not been confirmed.
+   */
+  bound?: string;
 }
 
 export interface Project {
@@ -147,7 +155,7 @@ export const verification = {
     "Harnesses live in `#[cfg(kani)] mod verification` blocks co-located with the code they constrain, so they are invisible to normal builds and cost nothing at runtime.",
     "Miri runs as the dynamic undefined-behaviour backstop for what Kani cannot reach.",
     "Numerics are separately validated against `scipy.stats`, `scikit-learn`, `ruptures`, and `mlxtend` via committed golden fixtures, to documented tolerances between 1e-8 and 1e-12.",
-    "Sampling is deterministic by construction: a hand-written SplitMix64 generator gives byte-identical results across platforms.",
+    "Sampling is deterministic by construction: a hand-written SplitMix64 generator produces a byte-identical *stream* on every target. A long floating-point reduction over that stream may still differ in the last few ULPs, because summation order is a codegen decision — so the stream is pinned exactly and reductions are checked to a tolerance.",
     "The full suite takes upwards of twenty minutes, so it runs as a release gate rather than on every push.",
   ],
   proofs: [
@@ -155,21 +163,25 @@ export const verification = {
       name: "resampling_permutation_is_bijection",
       establishes: "A permutation resampler emits each index exactly once — it permutes rather than merely shuffling.",
       area: "Resampling",
+      bound: "N = 4",
     },
     {
       name: "resampling_kfold_test_sets_partition",
       establishes: "K-fold test sets partition the dataset: no sample is held out twice, none is silently dropped.",
       area: "Resampling",
+      bound: "N = 4, k = 2",
     },
     {
       name: "resampling_bootstrap_indices_in_bounds",
       establishes: "Every bootstrap draw indexes inside the sample, for all sample sizes.",
       area: "Resampling",
+      bound: "N = 3, B = 2",
     },
     {
       name: "resampling_loo_indices_partition",
       establishes: "Leave-one-out splits cover the dataset exactly once each.",
       area: "Resampling",
+      bound: "n = 3",
     },
     {
       name: "moments_variance_non_negative",
@@ -185,11 +197,13 @@ export const verification = {
       name: "rng_next_f64_in_unit_interval",
       establishes: "Generated floats land in [0, 1) with no boundary escape.",
       area: "PRNG",
+      bound: "exhaustive over u64",
     },
     {
       name: "rng_u64_to_f64_faithful",
       establishes: "The integer-to-float conversion rounds faithfully rather than drifting at the extremes.",
       area: "PRNG",
+      bound: "exhaustive over u64",
     },
     {
       name: "ziggurat_table_indices_in_bounds",

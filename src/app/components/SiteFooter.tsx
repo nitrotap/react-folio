@@ -1,6 +1,14 @@
 import Link from "next/link";
 import { profile, navLinks } from "@/data/site";
 
+/**
+ * Evaluated once at build time, not per request — this is a static export, so
+ * a client-side `new Date()` would be the only way to track the viewing year.
+ * The build year is the honest value: it says when this content was last
+ * published, which is what a copyright line is for.
+ */
+const BUILD_YEAR = new Date().getFullYear();
+
 export default function SiteFooter() {
   return (
     <footer className="w-full mt-20" style={{ borderTop: "1px solid var(--color-border)" }}>
@@ -46,6 +54,16 @@ export default function SiteFooter() {
             ))}
           </ul>
         </div>
+      </div>
+
+      <div
+        className="container mx-auto px-4 py-6 flex flex-wrap gap-x-6 gap-y-2 justify-between text-xs"
+        style={{ borderTop: "1px solid var(--color-border)", color: "var(--muted)" }}
+      >
+        <p>
+          © {BUILD_YEAR} {profile.name}. All rights reserved.
+        </p>
+        <p style={{ fontFamily: "var(--font-code)" }}>Built in Rust-adjacent spirit, in Minnesota.</p>
       </div>
     </footer>
   );

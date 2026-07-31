@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { profile, pillars, projects, verification } from "@/data/site";
 import { getAllPosts, formatDate } from "@/lib/blog";
+import { NeuroSymbolic, NormalCurve } from "./components/Glyphs";
 
 export default function Home() {
   const featured = projects.filter((p) =>
@@ -11,9 +12,10 @@ export default function Home() {
   return (
     <div className="w-full max-w-5xl mx-auto">
       {/* Hero */}
-      <section className="pt-14 pb-16 md:pt-24 md:pb-24">
+      <section className="pt-14 pb-16 md:pt-24 md:pb-24 grid gap-12 lg:grid-cols-[1fr_auto] lg:items-center">
+        <div>
         <p
-          className="text-xs uppercase mb-6"
+          className="text-xs uppercase mb-6 kj-rule kj-enter"
           style={{
             color: "var(--accent)",
             letterSpacing: "0.2em",
@@ -22,23 +24,25 @@ export default function Home() {
         >
           {profile.role} · {profile.location}
         </p>
-        <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.05] text-balance">
+        <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.05] text-balance kj-enter kj-enter-1">
           {profile.thesis}
         </h1>
         <p
-          className="mt-8 text-lg md:text-xl leading-relaxed max-w-2xl"
+          className="mt-8 text-lg md:text-xl leading-relaxed max-w-2xl kj-enter kj-enter-2"
           style={{ color: "var(--muted)" }}
         >
           {profile.lede}
         </p>
-        <div className="mt-10 flex flex-wrap gap-3">
+        <div className="mt-10 flex flex-wrap gap-3 kj-enter kj-enter-3">
           <Link href="/verification" className="control px-5 py-3 text-sm font-medium">
-            See the proofs →
+            See the proofs <span className="kj-arrow">→</span>
           </Link>
-          <Link href="/projects" className="px-5 py-3 text-sm" style={{ color: "var(--muted)" }}>
+          <Link href="/projects" className="kj-link px-5 py-3 text-sm" style={{ color: "var(--muted)" }}>
             Selected work
           </Link>
         </div>
+        </div>
+        <NeuroSymbolic className="hidden lg:block w-[260px] h-auto shrink-0" />
       </section>
 
       {/* Pillars */}
@@ -48,7 +52,7 @@ export default function Home() {
         </h2>
         <div className="grid gap-5 md:grid-cols-3">
           {pillars.map((p) => (
-            <article key={p.slug} className="surface p-6">
+            <article key={p.slug} className="surface p-6 kj-reveal">
               <p
                 className="text-xs uppercase mb-3"
                 style={{ color: "var(--accent)", letterSpacing: "0.14em", fontFamily: "var(--font-code)" }}
@@ -107,12 +111,12 @@ export default function Home() {
             Selected work
           </h2>
           <Link href="/projects" className="text-sm" style={{ color: "var(--accent)" }}>
-            All projects →
+            All projects <span className="kj-arrow">→</span>
           </Link>
         </div>
         <div className="grid gap-5 md:grid-cols-2">
           {featured.map((p) => (
-            <Link key={p.slug} href={`/projects/${p.slug}`} className="surface-interactive p-6 block">
+            <Link key={p.slug} href={`/projects/${p.slug}`} className="surface-interactive p-6 block kj-reveal">
               <div className="flex items-baseline justify-between gap-3 mb-2">
                 <h3 className="text-lg font-semibold">{p.name}</h3>
                 {p.status === "private" && (
@@ -132,6 +136,8 @@ export default function Home() {
         </div>
       </section>
 
+      <NormalCurve className="w-full max-w-md mx-auto opacity-70 kj-reveal" />
+
       {/* Writing */}
       {posts.length > 0 && (
         <section className="py-14" style={{ borderTop: "1px solid var(--color-border)" }}>
@@ -140,13 +146,13 @@ export default function Home() {
               Writing
             </h2>
             <Link href="/blog" className="text-sm" style={{ color: "var(--accent)" }}>
-              All posts →
+              All posts <span className="kj-arrow">→</span>
             </Link>
           </div>
           <ul className="flex flex-col gap-4">
             {posts.map((post) => (
               <li key={post.slug}>
-                <Link href={`/blog/${post.slug}`} className="surface-interactive p-5 block">
+                <Link href={`/blog/${post.slug}`} className="surface-interactive p-5 block kj-reveal">
                   <p className="text-xs mb-2" style={{ color: "var(--muted)", fontFamily: "var(--font-code)" }}>
                     {formatDate(post.date)} · {post.readingMinutes} min
                   </p>

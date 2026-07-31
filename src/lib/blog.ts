@@ -24,8 +24,24 @@ export interface PostMeta {
   readingMinutes: number;
 }
 
+export interface OutlineItem {
+  id: string;
+  label: string;
+  level: number;
+}
+
 export interface Post extends PostMeta {
   html: string;
+  outline: OutlineItem[];
+}
+
+/** GitHub-style heading slug: lowercase, punctuation dropped, spaces hyphenated. */
+export function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
 }
 
 function readDir(): string[] {
@@ -84,7 +100,8 @@ export async function getPost(slug: string): Promise<Post | null> {
   const { meta, content } = parseFile(file);
   if (!isVisible(meta)) return null;
 
-  return { ...meta, html: await renderMarkdown(content) };
+  const { html, outline } = await renderMarkdown(content);
+  return { ...meta, html, outline };
 }
 
 /**
@@ -96,8 +113,12 @@ export async function getPost(slug: string): Promise<Post | null> {
  * decision. Highlighting happens at build time, so shiki never ships to the
  * browser.
  */
-export async function renderMarkdown(md: string): Promise<string> {
+export async function renderMarkdown(
+  md: string,
+): Promise<{ html: string; outline: OutlineItem[] }> {
   const highlighted = new Map<string, string>();
+  const outline: OutlineItem[] = [];
+  const usedIds = new Set<string>();
 
   // A dedicated Marked instance per render, with `async` set at construction.
   // Mutating the shared `marked` singleton via setOptions().use() did not
@@ -140,10 +161,33 @@ export async function renderMarkdown(md: string): Promise<string> {
           .replace(/>/g, "&gt;");
         return `<pre><code>${escaped}</code></pre>`;
       },
+
+      /**
+       * Headings carry a stable id so Astryx's Outline has something to anchor
+       * to and scroll-spy against. Collisions get a numeric suffix — two
+       * sections legitimately called "Why" would otherwise both claim `#why`
+       * and the second would be unreachable.
+       */
+      heading(token) {
+        const text = this.parser.parseInline(token.tokens);
+        const plain = text.replace(/<[^>]+>/g, "").trim();
+        const base = slugify(plain) || `section-${outline.length + 1}`;
+        let id = base;
+        let n = 2;
+        while (usedIds.has(id)) id = `${base}-${n++}`;
+        usedIds.add(id);
+
+        // h2 and h3 make a useful table of contents; deeper levels are noise.
+        if (token.depth >= 2 && token.depth <= 3) {
+          outline.push({ id, label: plain, level: token.depth });
+        }
+        return `<h${token.depth} id="${id}">${text}</h${token.depth}>\n`;
+      },
     },
   });
 
-  return instance.parse(md) as Promise<string>;
+  const html = (await instance.parse(md)) as string;
+  return { html, outline };
 }
 
 export function formatDate(iso: string): string {
