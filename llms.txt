@@ -1,0 +1,114 @@
+# Kartik Jevaji
+
+> AI engineer, designer, implementer — usually all three on the same project. I build ontologies and reasoning agents that keep language models honest, design the interfaces people actually touch, and write the proofs and evaluations that say whether any of it works. Based in St. Paul, Minnesota.
+
+This site is a personal portfolio. It documents software engineering work across formal verification, AI evaluation, symbolic knowledge representation, and full-stack delivery. Claims about private work are described without links; everything linked below is publicly checkable.
+
+## What I work on
+
+- **Formal verification** — Model checking establishes properties over all inputs in a bounded space. A test tells you about the cases you thought of.
+- **AI security & evaluation** — Language models are probabilistic. Where proof does not apply, the answer is graded evaluation, determinism, and adversarial testing.
+- **Symbolic grounding** — Formal schemas turn tacit domain knowledge into something a reasoner can walk and a model can be held accountable to.
+- **Agents, workflows & harnesses** — An agent is easy to demo and hard to trust. The interesting engineering is the harness around it — what it is allowed to do, what grades it, and whether the same input twice gives the same answer.
+- **Data mining** — Fine-tuning a model for a domain means first having the data for it, and for the domains I care about that data does not exist in a convenient form. So I go and build it.
+- **Platforms & full stack** — The verification work only matters if the thing ships. I build the whole path — schema, API, interface, pipeline, host — and I have run it in production for paying customers.
+
+## Pages
+
+- [Home](https://www.nitrotap.dev/): Overview and selected work
+- [Verification](https://www.nitrotap.dev/verification): Kani proof harnesses over numeric code, quoted verbatim with the bound each property is proven over
+- [Projects](https://www.nitrotap.dev/projects): Selected work, public and private
+- [Skills](https://www.nitrotap.dev/skills): Capabilities grouped by purpose
+- [Writing](https://www.nitrotap.dev/blog): 9 posts
+- [Designs](https://www.nitrotap.dev/designs): The four themes this site ships in, documented
+- [Experience](https://www.nitrotap.dev/experience): Employment history
+- [Education](https://www.nitrotap.dev/education): Degrees and certifications
+- [About](https://www.nitrotap.dev/about)
+- [Contact](https://www.nitrotap.dev/contact)
+
+## Public projects
+
+- [stats-claw](https://www.nitrotap.dev/projects/stats-claw): In-process statistical computing for Rust — distributions, hypothesis tests, and resampling — with zero runtime dependencies, validated against scipy. Links: https://crates.io/crates/stats-claw, https://docs.rs/stats-claw, https://github.com/nitrotap/stats-claw.
+- [cobol-coder](https://www.nitrotap.dev/projects/cobol-coder): A Qwen2 0.5B fine-tune for COBOL system understanding, trained with Unsloth and Hugging Face Transformers. Links: https://huggingface.co/nitrotap/cobol-coder.
+- [COBOLEval](https://www.nitrotap.dev/projects/coboleval): A substantial rebuild of bloop's COBOL code-generation benchmark, adding JCL static analysis, an agentic orchestrator, and local inference. Links: https://github.com/nitrotap/COBOLEval, https://github.com/bloopai/COBOLEval.
+- [Verus — ghost/tracked macro fix](https://www.nitrotap.dev/projects/verus-ghost-macro): A merged contribution to the Verus compiler: type arguments were being dropped during Ghost/Tracked macro expansion, so a turbofish written in the source vanished before the type checker saw it. Links: https://github.com/verus-lang/verus/pull/2235, https://github.com/verus-lang/verus/issues/2013.
+- [City Code Assistant](https://www.nitrotap.dev/projects/city-code-assistant): A retrieval-augmented assistant over a city's municipal code — ask it to draft a checklist for a special events permit and it answers from the ordinance text. Links: https://github.com/nitrotap/city-code-assistant.
+
+## Private projects
+
+Described but not linked — the source is not public. Treat these as claims about capability rather than as artifacts you can inspect.
+
+- [yee-claw](https://www.nitrotap.dev/projects/yee-claw): An ontological application builder for verified code generation. A TypeDB ontology is the source of truth; a zero-dependency generator compiles it into the Rust type layer that hand-written numerics are built against.
+- [Telesto platform](https://www.nitrotap.dev/projects/telesto-platform): A federated platform serving multiple brands and customers from one codebase, with an ontology-backed data layer and infrastructure managed as code.
+- [Proximal](https://www.nitrotap.dev/projects/proximal): A continuously running pipeline that streams, enriches, and exports GitHub pull request data as structured training sets — with a Rust-specific subset feeding the code-generation work.
+
+## Writing
+
+- [A gateway is a control point, not a proof](https://www.nitrotap.dev/blog/a-gateway-is-a-control-point-not-a-proof): July 31, 2026. Reading the docs for Google's Agent Gateway. Some of what it enforces is a genuine invariant. Some of it is a language model grading another language model, which the docs are refreshingly honest about.
+- [Four ways to prove a program right](https://www.nitrotap.dev/blog/four-ways-to-prove-a-program-right): July 31, 2026. Kani, Verus, Dafny, and Lean prove different things, and only one of them proves something about the binary you ship. A comparison written from the position of having used exactly one of them.
+- [Where the ghost code goes](https://www.nitrotap.dev/blog/where-the-ghost-code-goes): July 31, 2026. Verus erases proofs before compilation, which sounds like a metaphor until you go read the macro that does it. What I learned about ghost types from fixing a turbofish that fell off during expansion.
+- [Proving a permutation is a bijection](https://www.nitrotap.dev/blog/proving-a-permutation-is-a-bijection): July 20, 2026. A statistics library is a bad fit for testing alone. The interesting failures are index arithmetic and structural invariants nobody writes a test for — so I model-check them instead.
+- [An ontology as a type system](https://www.nitrotap.dev/blog/an-ontology-as-a-type-system): July 6, 2026. The type layer of a Rust statistics library, generated from a TypeDB ontology. Not codegen for its own sake — a place to put domain knowledge where the compiler can enforce it.
+- [Fine-tuning for COBOL, and the harness that measures it](https://www.nitrotap.dev/blog/fine-tuning-for-cobol): June 18, 2026. A 0.5B model for COBOL system understanding is the easy half. The hard half is knowing whether it got better — which means fixing the benchmark first.
+- [Wrapping an agent in MCP is a schema problem](https://www.nitrotap.dev/blog/wrapping-an-agent-in-mcp-is-a-schema-problem): May 12, 2026. Exposing a LangChain agent over the Model Context Protocol. The transport is the easy half — the contract is a JSON Schema read by a model that will take every field in it literally.
+- [When the user table becomes a cache](https://www.nitrotap.dev/blog/when-the-user-table-becomes-a-cache): March 24, 2026. Putting Auth0 in front of Payload CMS is about forty lines of code. The decision underneath it is which system owns the user — and whether you're willing to answer that once.
+- [Most automation is a query on a timer](https://www.nitrotap.dev/blog/most-automation-is-a-query-on-a-timer): February 10, 2026. Jira and Confluence automation rules are sold as Trigger, Condition, Action. Count the real ones and the trigger turns out to be the least interesting part.
+
+## Topics
+
+- [kani](https://www.nitrotap.dev/blog/tag/kani): 3 posts
+- [rust](https://www.nitrotap.dev/blog/tag/rust): 3 posts
+- [verification](https://www.nitrotap.dev/blog/tag/verification): 3 posts
+- [agents](https://www.nitrotap.dev/blog/tag/agents): 2 posts
+- [evaluation](https://www.nitrotap.dev/blog/tag/evaluation): 2 posts
+- [mcp](https://www.nitrotap.dev/blog/tag/mcp): 2 posts
+- [verus](https://www.nitrotap.dev/blog/tag/verus): 2 posts
+- [auth0](https://www.nitrotap.dev/blog/tag/auth0): 1 post
+- [authentication](https://www.nitrotap.dev/blog/tag/authentication): 1 post
+- [automation](https://www.nitrotap.dev/blog/tag/automation): 1 post
+- [cobol](https://www.nitrotap.dev/blog/tag/cobol): 1 post
+- [codegen](https://www.nitrotap.dev/blog/tag/codegen): 1 post
+- [confluence](https://www.nitrotap.dev/blog/tag/confluence): 1 post
+- [dafny](https://www.nitrotap.dev/blog/tag/dafny): 1 post
+- [fine-tuning](https://www.nitrotap.dev/blog/tag/fine-tuning): 1 post
+- [governance](https://www.nitrotap.dev/blog/tag/governance): 1 post
+- [jira](https://www.nitrotap.dev/blog/tag/jira): 1 post
+- [jql](https://www.nitrotap.dev/blog/tag/jql): 1 post
+- [jwt](https://www.nitrotap.dev/blog/tag/jwt): 1 post
+- [langchain](https://www.nitrotap.dev/blog/tag/langchain): 1 post
+- [lean](https://www.nitrotap.dev/blog/tag/lean): 1 post
+- [llm](https://www.nitrotap.dev/blog/tag/llm): 1 post
+- [ontologies](https://www.nitrotap.dev/blog/tag/ontologies): 1 post
+- [payload](https://www.nitrotap.dev/blog/tag/payload): 1 post
+- [python](https://www.nitrotap.dev/blog/tag/python): 1 post
+- [typedb](https://www.nitrotap.dev/blog/tag/typedb): 1 post
+
+## Experience
+
+- **Phase Change Software** — Software Engineer, November 2023 – Present
+- **edX** — Instructional Specialist, March 2023 – December 2023
+- **ATHENA Consulting** — Web Development Intern, July 2023 – November 2023
+- **Epic** — Application Coordinator, Implementation Services, April 2011 – January 2013
+
+## Skills
+
+- **Verification & correctness**: Kani (bounded model checking), Verus (linear ghost types), Miri (undefined-behaviour detection), Property and invariant design, Reference-equivalence testing, Deterministic PRNG design, Playwright end-to-end testing, Jest / Vitest, Mechanical quality gates
+- **AI engineering**: LLM fine-tuning (Unsloth, Hugging Face Transformers), Qwen, Llama 3.2, Granite, DeepSeek, OpenAI Agents SDK, LangChain / LangSmith, Model Context Protocol (MCP), Multi-agent architectures, Harness-level evals and graders, Hallucination detection, Retrieval-augmented generation, Vector stores, Azure OpenAI, Anthropic Claude, OpenAI GPT
+- **Symbolic AI & knowledge representation**: TypeDB / TypeQL, Agentic and domain ontologies, Ontology-driven code generation, LinkML, Semantic web (Jena, RDF), Datalog stores
+- **Languages**: Rust, TypeScript / JavaScript, Python, Kotlin, SQL, COBOL / JCL, PHP, Java, R / SAS, OCaml / ReasonML
+- **Web & product**: React, Next.js, TanStack Start, Angular, Ionic / Capacitor, Three.js, React Three Fiber, Astryx, Radix UI, Tailwind CSS, Drizzle ORM, better-auth, GraphQL / Apollo, Express.js
+- **Data**: PostgreSQL, TypeDB, MySQL / MariaDB, MongoDB, pgvector, Sequelize / Mongoose
+- **Infrastructure & delivery**: Docker, Ansible, nginx, systemd, VPS administration, AWS, Azure, Vercel, CI/CD pipelines, Turborepo / pnpm, Sentry
+- **Statistics**: Hypothesis testing, Bayesian statistics, Resampling and bootstrap, Regression and regularisation, Clustering and decomposition, Change-point detection, Predictive modelling, Time series analysis
+
+## Elsewhere
+
+- [GitHub](https://github.com/nitrotap)
+- [LinkedIn](https://www.linkedin.com/in/kjevaji)
+- [Hugging Face](https://huggingface.co/nitrotap)
+- [Email](mailto:kartikinpublic@gmail.com)
+
+## Optional
+
+- [Sitemap](https://www.nitrotap.dev/sitemap.xml): Every URL on the site
+- [Search index](https://www.nitrotap.dev/search-index.json): Full text of every post, project, and skill group as JSON — the most efficient way to read this site in bulk
