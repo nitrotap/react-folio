@@ -408,6 +408,31 @@ export const projects: Project[] = [
     links: [],
   },
   {
+    slug: "verus-ghost-macro",
+    name: "Verus — ghost/tracked macro fix",
+    tagline: "Upstream, in the verifier itself",
+    status: "public",
+    period: "2026",
+    summary:
+      "A merged contribution to the Verus compiler: type arguments were being dropped during Ghost/Tracked macro expansion, so a turbofish written in the source vanished before the type checker saw it.",
+    detail: [
+      "`Ghost::<int>(1)` failed with `error[E0283]: type annotations needed` — an odd thing to be told when the annotation is right there in the source. Verus issue #2013, filed by a core developer.",
+      "The fix extracts the path arguments off the call before the visitor rewrites the expression, then interpolates the turbofish into all six generated code paths — Ghost and Tracked, each across erase, spec, and exec.",
+      "Three tests, including a negative one: `Ghost::<bool>(1int)` must still be rejected.",
+      "Merged into `verus-lang/verus` on 10 March 2026. Not a system verified in Verus — a patch to the machinery that erases ghost code, which is a different and smaller claim.",
+    ],
+    stack: ["Rust", "proc macros", "syn", "Verus"],
+    links: [
+      { label: "PR #2235", href: "https://github.com/verus-lang/verus/pull/2235" },
+      { label: "Issue #2013", href: "https://github.com/verus-lang/verus/issues/2013" },
+      { label: "Write-up", href: "/blog/where-the-ghost-code-goes" },
+    ],
+    highlights: [
+      { label: "Merged upstream", value: "2026-03-10" },
+      { label: "Generated paths fixed", value: "6" },
+    ],
+  },
+  {
     slug: "city-code-assistant",
     name: "City Code Assistant",
     tagline: "Retrieval over municipal code",
