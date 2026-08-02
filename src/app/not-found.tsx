@@ -1,16 +1,31 @@
-import Nav from "./components/Nav";
-import Footer from "./components/Footer";
 import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <>
-      <Nav />
-      <h1 className="text-5xl font-bold text-coyote-600 mb-4">404</h1>
-      <h2 className="text-2xl text-rich_black-500 mb-6">Page Not Found</h2>
-      <p className="mb-8 text-cadet_gray-700">Sorry, the page you are looking for does not exist.</p>
-      <Link href="/" className="px-6 py-2 bg-cerulean-500 text-wheat-100 rounded shadow hover:bg-cerulean-700 transition">Go Home</Link>
-      <Footer />
-    </>
+    <div className="w-full max-w-3xl mx-auto py-24">
+      <p
+        className="text-xs uppercase mb-5"
+        style={{ color: "var(--accent)", letterSpacing: "0.2em", fontFamily: "var(--font-code)" }}
+      >
+        404
+      </p>
+      <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-5">
+        No route matches that path.
+      </h1>
+      <p className="text-lg mb-10" style={{ color: "var(--muted)" }}>
+        The page you asked for does not exist — or it moved and nothing redirected you here.
+      </p>
+      <div className="flex flex-wrap gap-3">
+        <Link href="/" className="control px-5 py-3 text-sm">
+          Home
+        </Link>
+        <Link href="/projects" className="px-5 py-3 text-sm" style={{ color: "var(--muted)" }}>
+          Projects
+        </Link>
+        <Link href="/blog" className="px-5 py-3 text-sm" style={{ color: "var(--muted)" }}>
+          Writing
+        </Link>
+      </div>
+    </div>
   );
-} 
+}

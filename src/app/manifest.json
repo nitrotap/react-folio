@@ -1,23 +1,41 @@
 {
-  "name": "Kartik Jevaji's Portfolio",
-  "short_name": "Portfolio",
-  "description": "The personal portfolio of nitrotap, showcasing projects, skills, and experience.",
+  "name": "Kartik Jevaji — AI engineer, designer, implementer",
+  "short_name": "Kartik Jevaji",
+  "description": "AI engineering, ontologies, and verified systems. Projects, writing, and the proof harnesses behind them.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#0f172a",
+  "background_color": "#1a1c2c",
+  "theme_color": "#1a1c2c",
   "orientation": "portrait",
   "icons": [
     {
       "src": "/favicon.ico",
-      "sizes": "48x48 72x72 96x96 128x128 256x256",
+      "sizes": "16x16 32x32 48x48",
       "type": "image/x-icon"
     },
     {
-      "src": "/images/kj-img.jpg",
+      "src": "/images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/icon-512.png",
       "sizes": "512x512",
-      "type": "image/jpeg",
-      "purpose": "any maskable"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/images/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "lang": "en"
