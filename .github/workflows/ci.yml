@@ -1,0 +1,59 @@
+name: CI
+
+# The same gates the deploy runs, on the pull request instead of after the
+# merge. Without this a broken build is caught only once it is already on main:
+# the deploy fails safely, but the branch is red and the fix has to land as a
+# follow-up commit.
+#
+# Only `pull_request` — pushes to main are covered by Deploy, which runs these
+# same steps before publishing, and building both would be duplicate work.
+on:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: lint, build, verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Verify the export
+        run: bash scripts/verify-export.sh
+
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo "### Static export"
+            echo
+            if [ -d out ]; then
+              echo "- pages: $(find out -name '*.html' | wc -l | tr -d ' ')"
+              echo "- sitemap urls: $(grep -c '<loc>' out/sitemap.xml || echo 0)"
+            else
+              echo "- build did not produce \`out/\`"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"

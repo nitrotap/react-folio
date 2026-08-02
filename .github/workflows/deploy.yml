@@ -1,0 +1,108 @@
+name: Deploy
+
+# Builds the static export and publishes it to `gh-pages-next`, the branch
+# GitHub Pages serves from (legacy branch-based build, custom domain
+# www.nitrotap.dev). Pages picks the push up on its own; nothing here calls the
+# Pages API.
+#
+# The publish step is last on purpose. Lint, build, and export verification all
+# run first, so a bad commit fails the job without ever touching the deploy
+# branch — the live site stays on the last good build rather than going down.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# One deploy at a time. `cancel-in-progress: false` deliberately: cancelling a
+# run that has already pushed to gh-pages-next would leave the site on a commit
+# nobody chose, and waiting out a queued deploy costs about a minute.
+concurrency:
+  group: deploy-pages
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    name: build and publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Verify the export
+        run: bash scripts/verify-export.sh
+
+      # Neither file is build output; both belong to the deploy. Without CNAME,
+      # Pages drops the custom domain on the next publish. Without .nojekyll,
+      # Jekyll ignores every path beginning with an underscore — which is all of
+      # _next/ — and the site loads with no CSS and no JS.
+      - name: Add Pages control files
+        run: |
+          printf 'www.nitrotap.dev\n' > out/CNAME
+          touch out/.nojekyll
+
+          # The publish worktree checks out gh-pages-next, so this repo's
+          # .gitignore does not apply there and `git add -A` takes whatever is
+          # in the tree. A Linux runner will not produce .DS_Store, but a manual
+          # run from a Mac would, and that has put junk into a release before.
+          find out \( -name '.DS_Store' -o -name 'Thumbs.db' \) -delete
+
+      - name: Publish to gh-pages-next
+        run: |
+          set -euo pipefail
+          git config --global user.name  'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+          # Commit on top of the branch rather than force-pushing a fresh tree,
+          # so gh-pages-next keeps a readable record of what was live when.
+          # The worktree shares this clone's config, including the credentials
+          # actions/checkout wrote, so `git push origin` authenticates.
+          git fetch --depth=1 origin gh-pages-next
+          git worktree add --detach "$RUNNER_TEMP/publish" origin/gh-pages-next
+
+          find "$RUNNER_TEMP/publish" -mindepth 1 -maxdepth 1 -not -name '.git' -exec rm -rf {} +
+          cp -R out/. "$RUNNER_TEMP/publish/"
+
+          cd "$RUNNER_TEMP/publish"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "byte-identical to what is already live; nothing to publish"
+            exit 0
+          fi
+
+          git commit -q \
+            -m "Deploy site from ${GITHUB_SHA:0:10}" \
+            -m "${GITHUB_REF_NAME} @ ${GITHUB_SHA} (run ${GITHUB_RUN_ID})"
+          git push origin HEAD:gh-pages-next
+
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo "### Deploy"
+            echo
+            echo "- source commit: \`${GITHUB_SHA:0:10}\`"
+            if [ -d out ]; then
+              echo "- pages built: $(find out -name '*.html' | wc -l | tr -d ' ')"
+            fi
+            echo "- site: <https://www.nitrotap.dev>"
+            echo
+            echo "Pages builds from \`gh-pages-next\`; allow a minute after this job for it to go live."
+          } >> "$GITHUB_STEP_SUMMARY"
